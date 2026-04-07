@@ -1,5 +1,5 @@
 /* ============================================================
-   dl-page.js  v2.2.0
+   dl-page.js  v2.3.0
    Download Page — Pulse of Perseverance (P3)
    Repo: tparis7/Download-Page-Redesign
    ============================================================
@@ -147,7 +147,7 @@
 '.download-row{display:flex;gap:22px;align-items:flex-end}',
 '.qr-card{background:#fff;border-radius:16px;padding:10px;text-align:center;flex-shrink:0;width:148px;box-shadow:0 16px 50px rgba(0,0,0,.35)}',
 '.qr-card img{width:100%;height:auto;border-radius:8px}',
-'.qr-label{display:block;text-align:center;font-size:10px;color:var(--maroon);font-weight:700;margin-top:4px;letter-spacing:1.5px;text-transform:uppercase;line-height:1}',
+'.qr-label{display:block;text-align:center;font-size:10px;color:var(--maroon);font-weight:700;margin-top:6px;letter-spacing:1.5px;text-transform:uppercase;line-height:1.6}',
 '.dl-final-cta .qr-card{width:130px}',
 '.store-badges{display:flex;flex-direction:column;gap:10px}',
 '.store-badges img{height:48px;cursor:pointer;transition:transform .15s}',
@@ -201,7 +201,7 @@
 '.dl-talent{background:#fff;padding:82px 48px}',
 '.dl-talent-inner{display:grid;grid-template-columns:55% 45%;gap:60px;max-width:1240px;margin:0 auto;align-items:center}',
 '.dl-talent-statement{position:relative;overflow:visible}',
-'.dl-talent-statement .dl-quote-mark{font-family:"Space Grotesk",Georgia,serif;font-size:180px;line-height:.6;color:var(--crimson);opacity:.15;position:absolute;top:-40px;left:-20px;pointer-events:none;z-index:1;display:block;width:auto;height:auto}',
+'.dl-talent-statement::before{content:"\\201C";font-family:"Space Grotesk",Georgia,serif;font-size:180px;line-height:.6;color:var(--crimson);opacity:.15;position:absolute;top:-40px;left:-20px;pointer-events:none;z-index:0}',
 '.dl-talent-statement h2{font-family:"Space Grotesk",sans-serif;font-size:clamp(40px,5.8vw,80px);font-weight:700;line-height:1.02;color:var(--dark);letter-spacing:-0.03em;position:relative}',
 '.dl-talent-statement h2 .accent{color:var(--crimson)}',
 '.dl-talent-statement h2 .strike{position:relative;display:inline-block}',
@@ -251,7 +251,7 @@
 '  .dl-safety-grid{grid-template-columns:repeat(2,1fr)}',
 '  .dl-talent-inner{grid-template-columns:1fr;gap:48px;text-align:center}',
 '  .dl-talent-statement{text-align:center}',
-'  .dl-talent-statement .dl-quote-mark{position:relative;top:auto;left:auto;display:block;margin-bottom:-30px}',
+'  .dl-talent-statement::before{position:relative;top:auto;left:auto;display:block;margin-bottom:-30px}',
 '  .dl-talent-visual{flex-wrap:wrap;justify-content:center}',
 '  .dl-talent-stat{flex:1 1 220px;max-width:280px}',
 '  .dl-talent-sub{margin:28px auto 0}',
@@ -284,7 +284,7 @@
 '  .dl-safety-card p{max-width:360px;margin:0 auto}',
 '  .dl-talent{padding:52px 20px}',
 '  .dl-talent-statement{text-align:center}',
-'  .dl-talent-statement .dl-quote-mark{font-size:72px;position:relative;top:auto;left:auto;display:block;margin-bottom:-14px;opacity:.15}',
+'  .dl-talent-statement::before{font-size:72px;position:relative;top:auto;left:auto;display:block;margin-bottom:-14px;opacity:.15}',
 '  .dl-talent-statement h2{font-size:clamp(30px,8.5vw,44px);line-height:1.05}',
 '  .dl-talent-sub{font-size:14px;margin:18px auto 0;max-width:440px}',
 '  .dl-talent-visual{flex-direction:column;gap:8px;align-items:center}',
@@ -443,7 +443,7 @@
 
     // Stats
     var meta = el('div', { className: 'hero-meta' });
-    meta.innerHTML = '<span>\u2605 4.9 App Store</span><span class="dot"></span><span>900+ users connected</span>';
+    meta.innerHTML = '<span><strong>\u2605 4.9</strong> App Store</span><span class="dot"></span><span><strong>900+</strong> users connected</span>';
     textCol.appendChild(meta);
     inner.appendChild(textCol);
 
@@ -580,8 +580,7 @@
     // Left — statement
     var statement = el('div', { className: 'dl-talent-statement' });
 
-    // Watermark quote mark (absolute, low opacity)
-    statement.appendChild(el('div', { className: 'dl-quote-mark' }, '\u201C'));
+    // Watermark quote mark rendered via CSS ::before pseudo-element
 
     var h2 = el('h2');
     h2.innerHTML = '\n        Talent is <span class="accent">universal.</span><br>\n        <span class="strike">Access</span> <span class="accent">is not.</span>\n      ';
