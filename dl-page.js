@@ -1,5 +1,5 @@
 /* ============================================================
-   dl-page.js  v2.6.0
+   dl-page.js  v2.7.0
    Download Page — Pulse of Perseverance (P3)
    Repo: tparis7/Download-Page-Redesign
    ============================================================
@@ -200,8 +200,8 @@
 '.dl-safety-card p{font-size:13px;color:rgba(255,255,255,.65);line-height:1.55}',
 
 '/* ===== TALENT / IMPACT ===== */',
-'.dl-talent{background:#fff;padding:82px 48px}',
-'.dl-talent-inner{display:grid;grid-template-columns:55% 45%;gap:60px;max-width:1240px;margin:0 auto;align-items:center}',
+'.dl-talent{padding:82px 48px;overflow:hidden;background:linear-gradient(135deg,rgba(255,255,255,.73) 0%,rgba(250,247,244,.7) 50%,rgba(255,255,255,.73) 100%),#fff url(\"https://tparis7.github.io/Download-Page-Redesign/VersusWoman.png\") center/cover no-repeat}',
+'.dl-talent-inner{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;max-width:1240px;margin:0 auto;align-items:center;position:relative;z-index:1}',
 '.dl-talent-statement{position:relative;overflow:visible}',
 '.dl-quote-mark{font-family:"Space Grotesk",sans-serif;font-size:180px;line-height:.6;color:var(--crimson);opacity:.35;position:absolute;top:-40px;left:-20px;pointer-events:none;z-index:0;user-select:none}',
 '.dl-talent-statement h2{font-family:"Space Grotesk",sans-serif;font-size:clamp(40px,5.8vw,80px);font-weight:700;line-height:1.02;color:var(--dark);letter-spacing:-0.03em;position:relative}',
@@ -227,19 +227,19 @@
 '.dl-final-cta .final-cta-note{font-size:13px;color:rgba(255,255,255,.5);margin-top:32px}',
 '.dl-final-cta .final-cta-note strong{color:rgba(255,255,255,.7)!important;font-weight:600}',
 
-'/* ===== FOOTER (pixel-match to homepage hp-shared-sections.js) ===== */',
-'.dl-footer{background:#0a0a0a;padding:64px 40px 32px;color:#fff}',
-'.dl-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;max-width:1100px;margin:0 auto;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1)}',
+'/* ===== FOOTER (pixel-match to prototype p3-footer) ===== */',
+'.dl-footer{background:#0a0a0a;padding:64px 40px 32px;color:rgba(255,255,255,.7);font-family:"Inter",-apple-system,sans-serif}',
+'.dl-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;max-width:1240px;margin:0 auto}',
 '.dl-footer-brand .p3-footer-logo{height:36px;width:auto;filter:brightness(0) invert(1)}',
-'.dl-footer-brand .dl-footer-tagline{font-size:13px;color:rgba(255,255,255,.5);line-height:1.6;margin-top:0}',
-'.dl-footer-brand .dl-footer-location{margin-top:10px;font-size:12px;color:rgba(255,255,255,.4)}',
-'.dl-footer-col{display:flex;flex-direction:column;gap:4px}',
-'.dl-footer-col h4{font-family:"Inter",sans-serif;font-size:11px;font-weight:600;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px}',
-'.dl-footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.6);padding:3px 0;transition:color .2s;text-decoration:none}',
+'.dl-footer-brand .dl-footer-tagline{font-size:14px;color:rgba(255,255,255,.6);line-height:1.7;margin-top:0}',
+'.dl-footer-brand .dl-footer-location{margin-top:10px;font-size:12px;color:rgba(255,255,255,.6)}',
+'.dl-footer-col{display:flex;flex-direction:column}',
+'.dl-footer-col h4{font-family:"Inter",sans-serif;font-size:11px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px}',
+'.dl-footer-col a{display:block;font-size:14px;color:rgba(255,255,255,.6);margin-bottom:10px;transition:color .2s;text-decoration:none}',
 '.dl-footer-col a:hover{color:#fff}',
-'.dl-footer-bottom{max-width:1100px;margin:0 auto;padding-top:0;font-size:12px;color:rgba(255,255,255,.4)}',
-'.dl-footer-bottom p{margin:0}',
-'.dl-footer-bottom a{color:rgba(255,255,255,.4);text-decoration:underline;transition:color .2s}',
+'.dl-footer-bottom{max-width:1240px;margin:56px auto 0;padding-top:28px;border-top:1px solid rgba(255,255,255,.08);font-size:12px;color:rgba(255,255,255,.45);text-align:center}',
+'.dl-footer-bottom span{color:rgba(255,255,255,.45)}',
+'.dl-footer-bottom a{color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}',
 '.dl-footer-bottom a:hover{color:#fff}',
 
 '/* ===== RESPONSIVE ===== */',
@@ -259,7 +259,7 @@
 '  .dl-talent-visual{flex-wrap:wrap;justify-content:center}',
 '  .dl-talent-stat{flex:1 1 220px;max-width:280px}',
 '  .dl-talent-sub{margin:28px auto 0}',
-'  .dl-footer-grid{grid-template-columns:1fr 1fr;gap:32px}',
+'  .dl-footer-grid{grid-template-columns:1fr 1fr;gap:40px}',
 '}',
 '@media(max-width:768px){',
 '  .dl-nav{padding:14px 20px}',
@@ -714,12 +714,11 @@
 
     footer.appendChild(grid);
 
-    // Bottom bar — single <p> with inline Terms link (matches homepage exactly)
+    // Bottom bar — span · link (matches prototype exactly)
     var bottom = el('div', { className: 'dl-footer-bottom' });
-    var bottomP = el('p');
-    bottomP.appendChild(document.createTextNode('\u00A9 2026 Pulse of Perseverance Project. All rights reserved.\u00A0'));
-    bottomP.appendChild(lnk(LINKS.terms, '', 'Terms & Conditions'));
-    bottom.appendChild(bottomP);
+    bottom.appendChild(el('span', null, '\u00A9 2026 Pulse of Perseverance Project. All rights reserved.'));
+    bottom.appendChild(document.createTextNode(' \u00B7 '));
+    bottom.appendChild(lnk(LINKS.terms, '', 'Terms & Conditions'));
     footer.appendChild(bottom);
 
     return footer;
