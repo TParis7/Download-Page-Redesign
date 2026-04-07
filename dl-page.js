@@ -1,5 +1,5 @@
 /* ============================================================
-   dl-page.js  v2.0.0
+   dl-page.js  v2.1.0
    Download Page — Pulse of Perseverance (P3)
    Repo: tparis7/Download-Page-Redesign
    ============================================================
@@ -120,7 +120,7 @@
 '.dl-nav-links a{color:rgba(255,255,255,.85);font-size:14px;font-weight:500;transition:color .2s}',
 '.dl-nav-links a:hover{color:#fff}',
 '.dl-nav-links .pp-home-desktop-hide{display:none}',
-'.dl-nav-links .nav-cta{background:var(--crimson);color:#fff;padding:12px 28px;border-radius:100px;font-weight:600;font-size:14px;transition:background .2s}',
+'.dl-nav-links .nav-cta{background:var(--crimson);color:#fff;padding:10px 24px;border-radius:100px;font-weight:600;font-size:14px;transition:background .2s}',
 '.dl-nav-links .nav-cta:hover{background:var(--crimson-dark)}',
 '.dl-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;z-index:1001}',
 '.dl-hamburger span{width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s}',
@@ -145,9 +145,10 @@
 '.dl-hero-text h1 .highlight{color:var(--crimson)}',
 '.dl-hero-text .sub{font-size:16px;color:rgba(255,255,255,.75);line-height:1.6;max-width:500px;margin-bottom:32px}',
 '.download-row{display:flex;gap:22px;align-items:flex-end}',
-'.qr-card{background:#fff;border-radius:16px;padding:10px;text-align:center;flex-shrink:0}',
-'.qr-card img{width:128px;border-radius:8px}',
-'.qr-label{font-size:10px;color:#4a1020;font-weight:600;margin-top:6px;letter-spacing:.5px}',
+'.qr-card{background:#fff;border-radius:16px;padding:10px;text-align:center;flex-shrink:0;width:148px;box-shadow:0 16px 50px rgba(0,0,0,.35)}',
+'.qr-card img{width:100%;height:auto;border-radius:8px}',
+'.qr-label{display:block;text-align:center;font-size:10px;color:var(--maroon);font-weight:700;margin-top:6px;letter-spacing:1.5px;text-transform:uppercase}',
+'.dl-final-cta .qr-card{width:130px}',
 '.store-badges{display:flex;flex-direction:column;gap:10px}',
 '.store-badges img{height:48px;cursor:pointer;transition:transform .15s}',
 '.store-badges img:hover{transform:scale(1.04)}',
@@ -186,6 +187,8 @@
 '.dl-safety .dl-section-header{margin-bottom:42px}',
 '.dl-safety .dl-section-header h2{color:#fff}',
 '.dl-safety .dl-section-header p{color:rgba(255,255,255,.65)}',
+'.dl-safety-lock{width:72px;height:72px;border-radius:20px;background:linear-gradient(135deg,rgba(217,58,58,.18),rgba(74,16,32,.3));border:1px solid rgba(217,58,58,.35);display:inline-flex;align-items:center;justify-content:center;margin-bottom:24px;color:var(--crimson)}',
+'.dl-safety-lock svg{width:34px;height:34px}',
 '.dl-safety-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}',
 '.dl-safety-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-lg);padding:32px 28px;transition:all var(--transition)}',
 '.dl-safety-card:hover{background:rgba(255,255,255,.06);border-color:rgba(217,58,58,.3);transform:translateY(-4px)}',
@@ -224,16 +227,16 @@
 
 '/* ===== FOOTER ===== */',
 '.dl-footer{background:#0a0a0a;padding:64px 40px 32px;color:#fff}',
-'.dl-footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;max-width:1240px;margin:0 auto}',
-'.dl-footer-brand p{font-size:13px;color:rgba(255,255,255,.55);line-height:1.6;margin-top:14px}',
+'.dl-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;max-width:1240px;margin:0 auto}',
+'.dl-footer-brand .p3-footer-logo{height:36px;width:auto;margin-bottom:20px;filter:brightness(0) invert(1)}',
+'.dl-footer-brand p{font-size:14px;color:rgba(255,255,255,.6);line-height:1.7;max-width:340px}',
 '.dl-footer-brand .loc{margin-top:8px;font-size:12px;color:rgba(255,255,255,.35)}',
-'.dl-footer-brand img{height:28px;margin-bottom:4px}',
-'.dl-footer-col h4{font-family:"Space Grotesk",sans-serif;font-size:13px;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:18px}',
-'.dl-footer-col a{display:block;font-size:14px;color:rgba(255,255,255,.7);margin-bottom:12px;transition:color .2s}',
-'.dl-footer-col a:hover{color:#fff}',
-'.dl-footer-bottom{border-top:1px solid rgba(255,255,255,.08);margin-top:48px;padding-top:24px;display:flex;justify-content:space-between;align-items:center;max-width:1240px;margin-left:auto;margin-right:auto;font-size:12px;color:rgba(255,255,255,.35)}',
-'.dl-footer-bottom a{color:rgba(255,255,255,.5);transition:color .2s}',
-'.dl-footer-bottom a:hover{color:#fff}',
+'.dl-footer-col h4{color:#fff;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;font-family:Inter,sans-serif}',
+'.dl-footer-col a{display:block;font-size:14px;color:rgba(255,255,255,.6);margin-bottom:10px;transition:color var(--transition);text-decoration:none}',
+'.dl-footer-col a:hover{color:var(--crimson)}',
+'.dl-footer-bottom{max-width:1240px;margin:56px auto 0;padding-top:28px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:8px 20px;text-align:center;font-size:12px;color:rgba(255,255,255,.45)}',
+'.dl-footer-bottom a{color:rgba(255,255,255,.45);text-decoration:none;transition:color var(--transition)}',
+'.dl-footer-bottom a:hover{color:var(--crimson)}',
 
 '/* ===== RESPONSIVE ===== */',
 '@media(max-width:1024px){',
@@ -246,8 +249,11 @@
 '  .dl-scroll-headline h2{font-size:42px}',
 '  .dl-feature-grid{grid-template-columns:repeat(2,1fr)}',
 '  .dl-safety-grid{grid-template-columns:repeat(2,1fr)}',
-'  .dl-talent-inner{grid-template-columns:1fr}',
+'  .dl-talent-inner{grid-template-columns:1fr;gap:48px;text-align:center}',
 '  .dl-talent-statement{text-align:center}',
+'  .dl-talent-statement .dl-quote-mark{position:relative;top:auto;left:auto;display:block;margin-bottom:-30px}',
+'  .dl-talent-visual{flex-wrap:wrap;justify-content:center}',
+'  .dl-talent-stat{flex:1 1 220px;max-width:280px}',
 '  .dl-talent-sub{margin:28px auto 0}',
 '  .dl-footer-grid{grid-template-columns:1fr 1fr}',
 '}',
@@ -265,10 +271,20 @@
 '  .dl-scroll-headline h2{font-size:32px}',
 '  .dl-features{padding:48px 20px}',
 '  .dl-feature-grid{grid-template-columns:1fr}',
-'  .dl-safety{padding:48px 20px}',
-'  .dl-safety-grid{grid-template-columns:1fr}',
+'  .dl-safety{padding:56px 20px}',
+'  .dl-safety-lock{width:60px;height:60px;margin-bottom:18px}',
+'  .dl-safety-lock svg{width:28px;height:28px}',
+'  .dl-safety-grid{grid-template-columns:1fr;gap:14px}',
+'  .dl-safety-card{padding:28px 22px;text-align:center;display:flex;flex-direction:column;align-items:center}',
+'  .dl-safety-card .sc-icon{margin:0 auto 16px}',
+'  .dl-safety-card p{max-width:360px;margin:0 auto}',
 '  .dl-talent{padding:52px 20px}',
-'  .dl-talent-statement h2{font-size:36px}',
+'  .dl-talent-statement{text-align:center}',
+'  .dl-talent-statement .dl-quote-mark{font-size:72px;position:relative;top:auto;left:auto;display:block;margin-bottom:-14px;opacity:.15}',
+'  .dl-talent-statement h2{font-size:clamp(30px,8.5vw,44px);line-height:1.05}',
+'  .dl-talent-sub{font-size:14px;margin:18px auto 0;max-width:440px}',
+'  .dl-talent-visual{flex-wrap:wrap;justify-content:center}',
+'  .dl-talent-stat{flex:1 1 220px;max-width:280px;text-align:center;border-left:none;border-top:3px solid var(--crimson)}',
 '  .dl-final-cta{padding:48px 20px}',
 '  .dl-final-cta h2{font-size:32px}',
 '  .dl-final-cta .final-cta-row{flex-direction:column;align-items:center;gap:16px}',
@@ -519,8 +535,12 @@
     var inner = el('div', { className: 'dl-safety-inner' });
 
     var header = el('div', { className: 'dl-section-header' });
+    // Lock icon
+    var lockIcon = el('div', { className: 'dl-safety-lock' });
+    lockIcon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>';
+    header.appendChild(lockIcon);
     header.appendChild(el('h2', null, 'Built with student safety at the core.'));
-    header.appendChild(el('p', null, 'Every layer of the P3 platform is designed to keep students protected \u2014 from mentor onboarding to the way conversations happen.'));
+    header.appendChild(el('p', null, 'Every layer of the P3 platform is designed to keep students protected \u2014 from mentor onboarding to the messages they see in-app.'));
     inner.appendChild(header);
 
     var grid = el('div', { className: 'dl-safety-grid' });
@@ -643,9 +663,10 @@
     var footer = el('footer', { className: 'dl-footer' });
     var grid = el('div', { className: 'dl-footer-grid' });
 
-    // Brand column
+    // Brand column — logo with brightness filter to match homepage
     var brand = el('div', { className: 'dl-footer-brand' });
-    brand.appendChild(img(IMG.logoW, 'Pulse of Perseverance Project'));
+    var fLogo = img(IMG.logoW, 'Pulse of Perseverance Project', 'p3-footer-logo');
+    brand.appendChild(fLogo);
     brand.appendChild(el('p', null, 'Unlocking life-changing opportunities for young visionaries. Free on iOS & Android.'));
     brand.appendChild(el('div', { className: 'loc' }, 'Chicago, IL \u00B7 Founded 2018'));
     grid.appendChild(brand);
@@ -682,9 +703,10 @@
 
     footer.appendChild(grid);
 
-    // Bottom bar
+    // Bottom bar — centered with dot separator (matches prototype)
     var bottom = el('div', { className: 'dl-footer-bottom' });
     bottom.appendChild(el('span', null, '\u00A9 2026 Pulse of Perseverance Project. All rights reserved.'));
+    bottom.appendChild(el('span', null, '\u00B7'));
     bottom.appendChild(lnk(LINKS.terms, '', 'Terms & Conditions'));
     footer.appendChild(bottom);
 
