@@ -67,7 +67,7 @@ a { text-decoration: none; color: inherit; }
   background: transparent;
   padding: 16px 40px;
   display: flex; align-items: center; justify-content: space-between; gap: 32px;
-  opacity: 0; transition: opacity 0.6s ease 0.1s, background 0.4s, backdrop-filter 0.4s, box-shadow 0.4s;
+  opacity: 0; transition: opacity 0.6s ease 0.05s, background 0.4s, backdrop-filter 0.4s, box-shadow 0.4s;
 }
 body.intro-done .p3-nav { opacity: 1; }
 .p3-nav.scrolled {
@@ -172,17 +172,8 @@ body.intro-done .p3-nav { opacity: 1; }
   100% { opacity: 1; transform: scale(1.05); }
 }
 
-/* Intro logo — shown full-screen on load, scales down to nav-size */
-.intro-logo {
-  position: fixed; top: 50%; left: 50%;
-  transform: translate(-50%, -50%) scale(3);
-  z-index: 200; pointer-events: none;
-  opacity: 1; transition: all 1.2s cubic-bezier(0.7, 0, 0.3, 1);
-  filter: drop-shadow(0 20px 60px rgba(0,0,0,0.5));
-}
-.intro-logo img { height: 80px; width: auto; display: block; filter: brightness(0) invert(1); }
-body.intro-1 .intro-logo { transform: translate(-50%, -50%) scale(1); }
-body.intro-done .intro-logo { opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
+/* Intro logo — removed (no zoom on page refresh) */
+.intro-logo { display: none; }
 
 /* Hero content */
 .hero-inner {
@@ -191,7 +182,7 @@ body.intro-done .intro-logo { opacity: 0; transform: translate(-50%, -50%) scale
   max-width: 1240px; width: 100%;
   padding: 140px 48px 100px;
   opacity: 0; transform: translateY(30px);
-  transition: opacity 0.9s ease 1.4s, transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 1.4s;
+  transition: opacity 0.9s ease 0.15s, transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.15s;
 }
 body.intro-done .hero-inner { opacity: 1; transform: translateY(0); }
 
@@ -202,14 +193,13 @@ body.intro-done .hero-inner { opacity: 1; transform: translateY(0); }
 }
 .hero h1 {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(36px, 4.6vw, 62px); font-weight: 700;
-  line-height: 1.06; color: #fff; margin-bottom: 24px;
+  font-size: clamp(34px, 4.2vw, 52px); font-weight: 700;
+  line-height: 1.1; color: #fff; margin-bottom: 24px;
   letter-spacing: -0.02em;
 }
 .hero h1 .line1 { white-space: nowrap; }
 .hero h1 .highlight {
-  background: linear-gradient(90deg, var(--crimson), #ff6b6b);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  color: var(--crimson);
 }
 .hero-text p.sub { font-size: 16px; color: rgba(255,255,255,0.75); max-width: 500px; margin-bottom: 32px; line-height: 1.6; }
 
@@ -243,7 +233,7 @@ body.intro-done .hero-inner { opacity: 1; transform: translateY(0); }
   position: relative; z-index: 2;
   transform: perspective(800px) scale(0.6) translateY(40px);
   opacity: 0;
-  transition: opacity 1s ease 0.9s, transform 1.1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.9s;
+  transition: opacity 1s ease 0.3s, transform 1.1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s;
 }
 body.intro-done .hero-iphone { opacity: 1; transform: perspective(800px) rotateY(-3deg) scale(1) translateY(0); }
 .hero-iphone:hover { transform: perspective(800px) rotateY(0deg) scale(1.02); }
@@ -251,7 +241,7 @@ body.intro-done .hero-iphone { opacity: 1; transform: perspective(800px) rotateY
   content: ''; position: absolute; width: 360px; height: 360px;
   background: radial-gradient(circle, rgba(217,58,58,0.28), transparent 70%);
   border-radius: 50%; z-index: 1; filter: blur(50px);
-  opacity: 0; transition: opacity 1.2s ease 1.1s;
+  opacity: 0; transition: opacity 1.2s ease 0.4s;
 }
 body.intro-done .hero-visual::before { opacity: 1; }
 
@@ -321,9 +311,13 @@ body.intro-done .hero-visual::before { opacity: 1; }
 .feature-card .fc-vis {
   position: relative;
   height: 180px;
-  background: repeating-linear-gradient(135deg, #ece2dc 0 18px, #e3d6cd 18px 36px);
+  background: var(--warm-gray-2);
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
   overflow: hidden;
+}
+.feature-card .fc-vis img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center top;
+  position: absolute; inset: 0;
 }
 .feature-card .fc-vis::after {
   content: ''; position: absolute; inset: 0;
@@ -426,7 +420,7 @@ body.intro-done .hero-visual::before { opacity: 1; }
   position: relative;
   padding: 82px 48px;
   background-image:
-    linear-gradient(135deg, rgba(255,255,255,0.88) 0%, rgba(250,247,244,0.85) 50%, rgba(255,255,255,0.88) 100%),
+    linear-gradient(135deg, rgba(255,255,255,0.73) 0%, rgba(250,247,244,0.70) 50%, rgba(255,255,255,0.73) 100%),
     url("VersusWoman.png");
   background-size: cover, cover;
   background-position: 50% 50%, 50% 50%;
@@ -501,8 +495,7 @@ body.intro-done .hero-visual::before { opacity: 1; }
   line-height: 1.12; color: #fff; margin-bottom: 18px; letter-spacing: -0.02em;
 }
 .final-cta h2 .highlight {
-  background: linear-gradient(90deg, var(--crimson), #ff6b6b);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  color: var(--crimson);
 }
 .final-cta p { font-size: 16px; color: rgba(255,255,255,0.7); max-width: 520px; margin: 0 auto 36px; line-height: 1.6; }
 .final-cta-row { display: flex; gap: 28px; justify-content: center; align-items: center; flex-wrap: wrap; }
@@ -799,15 +792,14 @@ body.intro-done .hero-visual::before { opacity: 1; }
   <div class="features-inner">
     <div class="section-header">
       <span class="section-tag tag-crimson">Inside the app</span>
-      <h2>Built for ambitious students.</h2>
+      <h2>Built for <span style="color: var(--crimson);">ambitious</span> students.</h2>
       <p>Six tools designed to turn curiosity into career momentum — without the friction.</p>
     </div>
 
     <div class="feature-grid">
       <div class="feature-card">
         <div class="fc-vis">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14 14 0 0 1 0 20"/><path d="M2 12h20"/></svg>
-          <span class="fc-ph-label">Placeholder Image</span>
+          <img src="New Mentor.jpeg" alt="AI Smart Match — mentor matching screen">
         </div>
         <div class="fc-body">
           <h3>AI Smart Match</h3>
@@ -816,18 +808,16 @@ body.intro-done .hero-visual::before { opacity: 1; }
       </div>
       <div class="feature-card">
         <div class="fc-vis">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          <span class="fc-ph-label">Placeholder Image</span>
+          <img src="Milestone Pathways Mobile.png" alt="Milestone Tracking — student achievement pathway">
         </div>
         <div class="fc-body">
-          <h3>Mentor Question Portal</h3>
-          <p>Any student — even unregistered — can ask mentors questions 24/7, removing every barrier to guidance.</p>
+          <h3>Milestone Tracking</h3>
+          <p>Students check off achievements — from first campus visit to first job — building longitudinal data.</p>
         </div>
       </div>
       <div class="feature-card">
         <div class="fc-vis">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-          <span class="fc-ph-label">Placeholder Image</span>
+          <img src="IMG_1421.jpg" alt="Career Opportunities — student exploring pathways">
         </div>
         <div class="fc-body">
           <h3>Career Opportunities</h3>
@@ -836,8 +826,7 @@ body.intro-done .hero-visual::before { opacity: 1; }
       </div>
       <div class="feature-card">
         <div class="fc-vis">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg>
-          <span class="fc-ph-label">Placeholder Image</span>
+          <img src="224A1273_Original.jpg" alt="Monthly Scholarships — P3 scholarship recipients">
         </div>
         <div class="fc-body">
           <h3>Monthly Scholarships</h3>
@@ -846,8 +835,7 @@ body.intro-done .hero-visual::before { opacity: 1; }
       </div>
       <div class="feature-card">
         <div class="fc-vis">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-          <span class="fc-ph-label">Placeholder Image</span>
+          <img src="VersusWoman.png" alt="Mentorship Guide — mentor and student collaboration">
         </div>
         <div class="fc-body">
           <h3>Mentorship Guide</h3>
@@ -856,12 +844,11 @@ body.intro-done .hero-visual::before { opacity: 1; }
       </div>
       <div class="feature-card">
         <div class="fc-vis">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
-          <span class="fc-ph-label">Placeholder Image</span>
+          <img src="Video collage.jpeg" alt="Mentor Question Portal — video response collage">
         </div>
         <div class="fc-body">
-          <h3>Milestone Tracking</h3>
-          <p>Students check off achievements — from first campus visit to first job — building longitudinal data.</p>
+          <h3>Mentor Question Portal</h3>
+          <p>Any student — even unregistered — can ask mentors questions 24/7, removing every barrier to guidance.</p>
         </div>
       </div>
     </div>
@@ -1003,14 +990,9 @@ body.intro-done .hero-visual::before { opacity: 1; }
    script, so the intro will not replay when returning from another tab.
 */
 (function runIntro(){
-  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduceMotion) {
-    document.body.classList.add('intro-1', 'intro-done');
-    return;
-  }
+  /* Logo zoom removed — trigger intro-done immediately for content reveal */
   requestAnimationFrame(function(){
-    setTimeout(function(){ document.body.classList.add('intro-1'); }, 80);
-    setTimeout(function(){ document.body.classList.add('intro-done'); }, 1100);
+    document.body.classList.add('intro-1', 'intro-done');
   });
 })();
 
