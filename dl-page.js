@@ -1,10 +1,10 @@
 /* ============================================================
-   dl-page.js  v2.8.0
+   dl-page.js  v3.0.0
    Download Page — Pulse of Perseverance (P3)
    Repo: tparis7/Download-Page-Redesign
    ============================================================
    Renders the full /download page inside Webflow.
-   Pixel-perfect match to GitHub prototype.
+   Pixel-perfect match to HOMEPAGE (hp-shared-sections.js).
    ============================================================ */
 
 (function () {
@@ -115,7 +115,7 @@
 
 '/* ===== NAV ===== */',
 '.dl-nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;transition:background .3s,box-shadow .3s}',
-'.dl-nav.scrolled{background:rgba(10,10,10,.95);box-shadow:0 1px 12px rgba(0,0,0,.25)}',
+'.dl-nav.scrolled{background:rgba(26,26,26,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 2px 20px rgba(0,0,0,.15)}',
 '.dl-nav-logo{height:36px;max-height:36px}',
 '.dl-nav-links{display:flex;align-items:center;gap:32px}',
 '.dl-nav-links a{color:rgba(255,255,255,.85);font-size:14px;font-weight:500;transition:color .2s}',
@@ -132,8 +132,9 @@
 '/* Mobile overlay */',
 '.dl-mobile-menu{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(26,26,26,.98);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;opacity:0;pointer-events:none;transition:opacity .3s}',
 '.dl-mobile-menu.open{opacity:1;pointer-events:auto}',
-'.dl-mobile-menu a{color:#fff;font-family:"Space Grotesk",sans-serif;font-size:22px;font-weight:600}',
-'.dl-mobile-menu .mob-cta{background:var(--crimson);color:#fff;padding:12px 28px;border-radius:100px;font-family:"Inter",sans-serif;font-weight:600;font-size:16px;margin-top:12px}',
+'.dl-mobile-menu a{color:#fff;font-family:"Space Grotesk",sans-serif;font-size:1.4rem;font-weight:600;opacity:.8;transition:opacity .3s}',
+'.dl-mobile-menu a:hover{opacity:1}',
+'.dl-mobile-menu .mob-cta{background:var(--crimson);color:#fff;padding:12px 28px;border-radius:100px;font-family:"Inter",sans-serif;font-weight:600;font-size:1rem;margin-top:12px;opacity:1}',
 
 '/* ===== HERO ===== */',
 '.dl-hero{position:relative;background:linear-gradient(135deg,#1a0510 0%,#4a1020 35%,#2a0a14 60%,#140510 100%);min-height:100vh;overflow:hidden}',
@@ -229,7 +230,8 @@
 
 '/* ===== FOOTER (pixel-match to homepage hp-shared-sections.js) ===== */',
 '.dl-footer{background:#0a0a0a;padding:64px 40px 32px;color:rgba(255,255,255,.5)}',
-'.dl-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;max-width:1100px;margin:0 auto;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1)}',
+'.dl-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;max-width:1100px;margin:0 auto 40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1)}',
+'.dl-footer-brand{display:flex;flex-direction:column}',
 '.dl-footer-brand .p3-footer-logo{height:36px;width:auto;filter:brightness(0) invert(1)}',
 '.dl-footer-brand .dl-footer-tagline{font-size:13px;color:rgba(255,255,255,.5);line-height:1.6;margin-top:0}',
 '.dl-footer-brand .dl-footer-location{margin-top:10px;font-size:12px;color:rgba(255,255,255,.4)}',
@@ -237,7 +239,7 @@
 '.dl-footer-col h4{font-family:"Inter",sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px}',
 '.dl-footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.6);padding:3px 0;transition:color .2s;text-decoration:none}',
 '.dl-footer-col a:hover{color:#fff}',
-'.dl-footer-bottom{max-width:1100px;margin:0 auto;padding-top:24px;font-size:12px;color:rgba(255,255,255,.4);display:flex;justify-content:space-between;align-items:center}',
+'.dl-footer-bottom{max-width:1200px;margin:0 auto;padding-top:0;font-size:12px;color:rgba(255,255,255,.4);display:flex;justify-content:space-between;align-items:center}',
 '.dl-footer-bottom p{margin:0;display:flex;justify-content:space-between;width:100%}',
 '.dl-footer-bottom a{color:rgba(255,255,255,.4);text-decoration:underline;transition:color .2s}',
 '.dl-footer-bottom a:hover{color:#fff}',
@@ -259,12 +261,15 @@
 '  .dl-talent-visual{flex-wrap:wrap;justify-content:center}',
 '  .dl-talent-stat{flex:1 1 220px;max-width:280px}',
 '  .dl-talent-sub{margin:28px auto 0}',
-'  .dl-footer-grid{grid-template-columns:1fr 1fr;gap:32px}',
 '}',
-'@media(max-width:768px){',
-'  .dl-nav{padding:14px 20px}',
+'/* 991px: Nav switches to mobile (matches hp-shared-sections.js breakpoint) */',
+'@media(max-width:991px){',
+'  .dl-nav{padding:16px;height:64px}',
 '  .dl-nav-links{display:none}',
 '  .dl-hamburger{display:flex}',
+'  .dl-nav-links .pp-home-desktop-hide{display:block}',
+'}',
+'@media(max-width:768px){',
 '  .dl-hero-inner{padding:110px 20px 50px;gap:24px}',
 '  .dl-hero-text h1{font-size:36px}',
 '  .dl-hero-text .sub{font-size:15px}',
@@ -301,8 +306,9 @@
 '  .dl-final-cta .final-cta-row{flex-direction:column;align-items:center;gap:16px}',
 '  .dl-final-cta .final-cta-row .store-badges{flex-direction:row}',
 '  .dl-footer{padding:40px 20px 24px}',
-'  .dl-footer-grid{grid-template-columns:1fr;gap:32px}',
-'  .dl-footer-bottom{text-align:center}',
+'  .dl-footer-grid{grid-template-columns:1fr 1fr;gap:24px 16px}',
+'  .dl-footer-brand{grid-column:1 / -1}',
+'  .dl-footer-bottom{flex-wrap:wrap;justify-content:center;text-align:center}',
 '  .dl-footer-bottom p{flex-direction:column;gap:8px;align-items:center}',
 '}',
 '@media(max-width:480px){',
