@@ -1,5 +1,5 @@
 /* ============================================================
-   dl-page.js  v2.5.0
+   dl-page.js  v2.6.0
    Download Page — Pulse of Perseverance (P3)
    Repo: tparis7/Download-Page-Redesign
    ============================================================
@@ -203,7 +203,7 @@
 '.dl-talent{background:#fff;padding:82px 48px}',
 '.dl-talent-inner{display:grid;grid-template-columns:55% 45%;gap:60px;max-width:1240px;margin:0 auto;align-items:center}',
 '.dl-talent-statement{position:relative;overflow:visible}',
-'.dl-quote-mark{font-family:"Space Grotesk",sans-serif;font-size:180px;line-height:.6;color:var(--crimson);opacity:.15;position:absolute;top:-40px;left:-20px;pointer-events:none;z-index:0;user-select:none}',
+'.dl-quote-mark{font-family:"Space Grotesk",sans-serif;font-size:180px;line-height:.6;color:var(--crimson);opacity:.35;position:absolute;top:-40px;left:-20px;pointer-events:none;z-index:0;user-select:none}',
 '.dl-talent-statement h2{font-family:"Space Grotesk",sans-serif;font-size:clamp(40px,5.8vw,80px);font-weight:700;line-height:1.02;color:var(--dark);letter-spacing:-0.03em;position:relative}',
 '.dl-talent-statement h2 .accent{color:var(--crimson)}',
 '.dl-talent-statement h2 .strike{position:relative;display:inline-block}',
@@ -229,7 +229,7 @@
 
 '/* ===== FOOTER (pixel-match to homepage hp-shared-sections.js) ===== */',
 '.dl-footer{background:#0a0a0a;padding:64px 40px 32px;color:#fff}',
-'.dl-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;max-width:1100px;margin:0 auto}',
+'.dl-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;max-width:1100px;margin:0 auto;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1)}',
 '.dl-footer-brand .p3-footer-logo{height:36px;width:auto;filter:brightness(0) invert(1)}',
 '.dl-footer-brand .dl-footer-tagline{font-size:13px;color:rgba(255,255,255,.5);line-height:1.6;margin-top:0}',
 '.dl-footer-brand .dl-footer-location{margin-top:10px;font-size:12px;color:rgba(255,255,255,.4)}',
@@ -237,8 +237,9 @@
 '.dl-footer-col h4{font-family:"Inter",sans-serif;font-size:11px;font-weight:600;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px}',
 '.dl-footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.6);padding:3px 0;transition:color .2s;text-decoration:none}',
 '.dl-footer-col a:hover{color:#fff}',
-'.dl-footer-bottom{display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto;padding-top:0;font-size:12px;color:rgba(255,255,255,.4)}',
-'.dl-footer-bottom a{color:rgba(255,255,255,.4);text-decoration:none;transition:color .2s}',
+'.dl-footer-bottom{max-width:1100px;margin:0 auto;padding-top:0;font-size:12px;color:rgba(255,255,255,.4)}',
+'.dl-footer-bottom p{margin:0}',
+'.dl-footer-bottom a{color:rgba(255,255,255,.4);text-decoration:underline;transition:color .2s}',
 '.dl-footer-bottom a:hover{color:#fff}',
 
 '/* ===== RESPONSIVE ===== */',
@@ -713,10 +714,12 @@
 
     footer.appendChild(grid);
 
-    // Bottom bar — space-between layout (matches homepage)
+    // Bottom bar — single <p> with inline Terms link (matches homepage exactly)
     var bottom = el('div', { className: 'dl-footer-bottom' });
-    bottom.appendChild(el('span', null, '\u00A9 2026 Pulse of Perseverance Project. All rights reserved.'));
-    bottom.appendChild(lnk(LINKS.terms, '', 'Terms & Conditions'));
+    var bottomP = el('p');
+    bottomP.appendChild(document.createTextNode('\u00A9 2026 Pulse of Perseverance Project. All rights reserved.\u00A0'));
+    bottomP.appendChild(lnk(LINKS.terms, '', 'Terms & Conditions'));
+    bottom.appendChild(bottomP);
     footer.appendChild(bottom);
 
     return footer;
