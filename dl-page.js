@@ -1,5 +1,5 @@
 /* ============================================================
-   dl-page.js  v2.4.0
+   dl-page.js  v2.5.0
    Download Page — Pulse of Perseverance (P3)
    Repo: tparis7/Download-Page-Redesign
    ============================================================
@@ -110,7 +110,7 @@
 '.dl-page{font-family:"Inter",sans-serif;color:#1a1a1a;overflow-x:hidden;-webkit-font-smoothing:antialiased}',
 '.dl-page img{max-width:100%;display:block}',
 '.dl-page a{text-decoration:none;color:inherit}',
-'.dl-page strong{color:inherit}',
+'.dl-page strong{color:inherit!important}',
 '.dl-page section{position:relative}',
 
 '/* ===== NAV ===== */',
@@ -154,7 +154,7 @@
 '.store-badges img{height:48px;cursor:pointer;transition:transform .15s}',
 '.store-badges img:hover{transform:scale(1.04)}',
 '.hero-meta{display:flex;align-items:center;gap:18px;margin-top:8px;font-size:13px;color:rgba(255,255,255,.65)}',
-'.hero-meta strong{color:inherit;font-weight:700}',
+'.hero-meta strong{color:#fff!important;font-weight:600}',
 '.hero-meta .dot{width:3px;height:3px;background:rgba(255,255,255,.35);border-radius:50%}',
 '.dl-hero-visual{display:flex;justify-content:center;align-items:center}',
 '.hero-iphone{width:400px;max-width:100%;filter:drop-shadow(0 40px 80px rgba(0,0,0,.55));position:relative;z-index:2}',
@@ -203,7 +203,7 @@
 '.dl-talent{background:#fff;padding:82px 48px}',
 '.dl-talent-inner{display:grid;grid-template-columns:55% 45%;gap:60px;max-width:1240px;margin:0 auto;align-items:center}',
 '.dl-talent-statement{position:relative;overflow:visible}',
-'.dl-talent-statement::before{content:"\\201C";font-family:"Space Grotesk",Georgia,serif;font-size:180px;line-height:.6;color:var(--crimson);opacity:.25;position:absolute;top:-40px;left:-20px;pointer-events:none;z-index:0}',
+'.dl-quote-mark{font-family:"Space Grotesk",sans-serif;font-size:180px;line-height:.6;color:var(--crimson);opacity:.15;position:absolute;top:-40px;left:-20px;pointer-events:none;z-index:0;user-select:none}',
 '.dl-talent-statement h2{font-family:"Space Grotesk",sans-serif;font-size:clamp(40px,5.8vw,80px);font-weight:700;line-height:1.02;color:var(--dark);letter-spacing:-0.03em;position:relative}',
 '.dl-talent-statement h2 .accent{color:var(--crimson)}',
 '.dl-talent-statement h2 .strike{position:relative;display:inline-block}',
@@ -225,19 +225,20 @@
 '.dl-final-cta .sub{font-size:16px;color:rgba(255,255,255,.7);margin-bottom:36px;line-height:1.6}',
 '.dl-final-cta .final-cta-row{display:flex;justify-content:center;gap:22px;align-items:flex-end;margin-bottom:20px}',
 '.dl-final-cta .final-cta-note{font-size:13px;color:rgba(255,255,255,.5);margin-top:32px}',
-'.dl-final-cta .final-cta-note strong{color:rgba(255,255,255,.7);font-weight:600}',
+'.dl-final-cta .final-cta-note strong{color:rgba(255,255,255,.7)!important;font-weight:600}',
 
-'/* ===== FOOTER (matches homepage hp-shared-sections.js) ===== */',
+'/* ===== FOOTER (pixel-match to homepage hp-shared-sections.js) ===== */',
 '.dl-footer{background:#0a0a0a;padding:64px 40px 32px;color:#fff}',
-'.dl-footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;max-width:1240px;margin:0 auto}',
-'.dl-footer-brand .p3-footer-logo{height:28px;width:auto;margin-bottom:4px}',
-'.dl-footer-brand p{font-size:13px;color:rgba(255,255,255,.55);line-height:1.6;margin-top:14px}',
-'.dl-footer-brand .loc{margin-top:8px;font-size:12px;color:rgba(255,255,255,.35)}',
-'.dl-footer-col h4{font-family:"Space Grotesk",sans-serif;font-size:13px;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:18px}',
-'.dl-footer-col a{display:block;font-size:14px;color:rgba(255,255,255,.7);margin-bottom:12px;transition:color .2s;text-decoration:none}',
+'.dl-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;max-width:1100px;margin:0 auto}',
+'.dl-footer-brand .p3-footer-logo{height:36px;width:auto;filter:brightness(0) invert(1)}',
+'.dl-footer-brand .dl-footer-tagline{font-size:13px;color:rgba(255,255,255,.5);line-height:1.6;margin-top:0}',
+'.dl-footer-brand .dl-footer-location{margin-top:10px;font-size:12px;color:rgba(255,255,255,.4)}',
+'.dl-footer-col{display:flex;flex-direction:column;gap:4px}',
+'.dl-footer-col h4{font-family:"Inter",sans-serif;font-size:11px;font-weight:600;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px}',
+'.dl-footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.6);padding:3px 0;transition:color .2s;text-decoration:none}',
 '.dl-footer-col a:hover{color:#fff}',
-'.dl-footer-bottom{border-top:1px solid rgba(255,255,255,.08);margin-top:48px;padding-top:24px;display:flex;justify-content:space-between;align-items:center;max-width:1240px;margin-left:auto;margin-right:auto;font-size:12px;color:rgba(255,255,255,.35)}',
-'.dl-footer-bottom a{color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s}',
+'.dl-footer-bottom{display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto;padding-top:0;font-size:12px;color:rgba(255,255,255,.4)}',
+'.dl-footer-bottom a{color:rgba(255,255,255,.4);text-decoration:none;transition:color .2s}',
 '.dl-footer-bottom a:hover{color:#fff}',
 
 '/* ===== RESPONSIVE ===== */',
@@ -253,11 +254,11 @@
 '  .dl-safety-grid{grid-template-columns:repeat(2,1fr)}',
 '  .dl-talent-inner{grid-template-columns:1fr;gap:48px;text-align:center}',
 '  .dl-talent-statement{text-align:center}',
-'  .dl-talent-statement::before{position:relative;top:auto;left:auto;display:block;margin-bottom:-30px}',
+'  .dl-quote-mark{position:relative;top:auto;left:auto;display:block;margin-bottom:-30px}',
 '  .dl-talent-visual{flex-wrap:wrap;justify-content:center}',
 '  .dl-talent-stat{flex:1 1 220px;max-width:280px}',
 '  .dl-talent-sub{margin:28px auto 0}',
-'  .dl-footer-grid{grid-template-columns:1fr 1fr}',
+'  .dl-footer-grid{grid-template-columns:1fr 1fr;gap:32px}',
 '}',
 '@media(max-width:768px){',
 '  .dl-nav{padding:14px 20px}',
@@ -286,7 +287,7 @@
 '  .dl-safety-card p{max-width:360px;margin:0 auto}',
 '  .dl-talent{padding:52px 20px}',
 '  .dl-talent-statement{text-align:center}',
-'  .dl-talent-statement::before{font-size:72px;position:relative;top:auto;left:auto;display:block;margin-bottom:-14px;opacity:.15}',
+'  .dl-quote-mark{font-size:72px;position:relative;top:auto;left:auto;display:block;margin-bottom:-14px;opacity:.15}',
 '  .dl-talent-statement h2{font-size:clamp(30px,8.5vw,44px);line-height:1.05}',
 '  .dl-talent-sub{font-size:14px;margin:18px auto 0;max-width:440px}',
 '  .dl-talent-visual{flex-direction:column;gap:8px;align-items:center}',
@@ -582,7 +583,8 @@
     // Left — statement
     var statement = el('div', { className: 'dl-talent-statement' });
 
-    // Watermark quote mark rendered via CSS ::before pseudo-element
+    // Watermark quote mark — real DOM element (matches prototype exactly)
+    statement.appendChild(el('div', { className: 'dl-quote-mark' }, '\u201C'));
 
     var h2 = el('h2');
     h2.innerHTML = '\n        Talent is <span class="accent">universal.</span><br>\n        <span class="strike">Access</span> <span class="accent">is not.</span>\n      ';
@@ -671,12 +673,12 @@
     var footer = el('footer', { className: 'dl-footer' });
     var grid = el('div', { className: 'dl-footer-grid' });
 
-    // Brand column — logo with brightness filter to match homepage
+    // Brand column — logo with brightness filter (matches homepage exactly)
     var brand = el('div', { className: 'dl-footer-brand' });
     var fLogo = img(IMG.logoW, 'Pulse of Perseverance Project', 'p3-footer-logo');
     brand.appendChild(fLogo);
-    brand.appendChild(el('p', null, 'Unlocking life-changing opportunities for young visionaries. Free on iOS & Android.'));
-    brand.appendChild(el('div', { className: 'loc' }, 'Chicago, IL \u00B7 Founded 2018'));
+    brand.appendChild(el('p', { className: 'dl-footer-tagline' }, 'Unlocking life-changing opportunities for young visionaries. Free on iOS & Android.'));
+    brand.appendChild(el('p', { className: 'dl-footer-location' }, 'Chicago, IL \u00B7 Founded 2018'));
     grid.appendChild(brand);
 
     // Platform column
