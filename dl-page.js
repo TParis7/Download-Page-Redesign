@@ -1,14 +1,20 @@
 /* ============================================================
-   dl-page.js  v1.0.0
+   dl-page.js  v1.1.0
    Download Page — Pulse of Perseverance (P3)
    Repo: tparis7/Download-Page-Redesign
    ============================================================
    Renders the full /download page inside Webflow.
    Loads via a small inline Webflow script tag (footer).
+   v1.1.0 — Fixes: duplicate guard, H1 styling, iPhone size,
+            section-tag pill, safety icons + card radius,
+            talent gap, final CTA spacing, nav/footer match
    ============================================================ */
 
 (function () {
   'use strict';
+
+  /* --- Execution guard: prevent duplicate rendering --- */
+  if (document.querySelector('.dl-page')) return;
 
   /* ----------------------------------------------------------
      0. CONSTANTS / ASSET MAP
@@ -113,7 +119,7 @@
 /* ===== NAV ===== */
 .dl-nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;transition:background .3s,box-shadow .3s}
 .dl-nav.scrolled{background:rgba(10,10,10,.95);box-shadow:0 1px 12px rgba(0,0,0,.25)}
-.dl-nav-logo{height:36px}
+.dl-nav-logo{height:36px;max-height:36px}
 .dl-nav-links{display:flex;align-items:center;gap:28px}
 .dl-nav-links a{color:rgba(255,255,255,.85);font-size:14px;font-weight:500;transition:color .2s}
 .dl-nav-links a:hover{color:#fff}
@@ -138,7 +144,8 @@
 .dl-hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(26,5,16,.85),rgba(74,16,32,.6),rgba(42,10,20,.8),rgba(20,5,16,.9));z-index:1}
 .dl-hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;max-width:1240px;margin:0 auto;padding:140px 48px 100px}
 .dl-hero-text h1{font-family:'Space Grotesk',sans-serif;font-size:52px;font-weight:700;color:#fff;line-height:1.1;margin-bottom:14px}
-.dl-hero-text h1 .line-break{display:block;color:rgba(255,255,255,.55);font-size:42px;font-weight:500;margin-top:2px}
+.dl-hero-text h1 .line1{display:block}
+.dl-hero-text h1 .highlight{color:#D93A3A}
 .dl-hero-text .sub{font-size:16px;color:rgba(255,255,255,.75);line-height:1.6;max-width:480px;margin-bottom:28px}
 .download-row{display:flex;gap:22px;align-items:flex-end}
 .qr-card{background:#fff;border-radius:16px;padding:10px;text-align:center;flex-shrink:0}
@@ -150,7 +157,7 @@
 .hero-meta{display:flex;align-items:center;gap:18px;margin-top:8px;font-size:13px;color:rgba(255,255,255,.65)}
 .hero-meta .dot{width:3px;height:3px;background:rgba(255,255,255,.35);border-radius:50%}
 .dl-hero-visual{display:flex;justify-content:center;align-items:center}
-.hero-iphone{max-width:400px;width:100%;filter:drop-shadow(0 24px 48px rgba(0,0,0,.4))}
+.hero-iphone{max-width:320px;width:100%;filter:drop-shadow(0 24px 48px rgba(0,0,0,.4))}
 
 /* ===== SCROLL HEADLINE ===== */
 .dl-scroll-headline{background:#fff;padding:86px 48px;text-align:center}
@@ -163,7 +170,7 @@
 .dl-features{background:#faf7f4;padding:68px 48px}
 .dl-features-inner{max-width:1240px;margin:0 auto}
 .dl-section-header{text-align:center;margin-bottom:48px}
-.dl-section-tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#D93A3A;margin-bottom:12px}
+.dl-section-tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#D93A3A;margin-bottom:12px;background:rgba(217,58,58,.08);padding:6px 16px;border-radius:50px}
 .dl-section-header h2{font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:700;color:#1a1a1a;margin-bottom:14px}
 .dl-section-header h2 span{color:#D93A3A}
 .dl-section-header p{font-size:16px;color:#666;max-width:540px;margin:0 auto;line-height:1.6}
@@ -182,14 +189,17 @@
 .dl-safety .dl-section-header{margin-bottom:42px}
 .dl-safety .dl-section-header h2{color:#fff}
 .dl-safety .dl-section-header p{color:rgba(255,255,255,.65)}
+.dl-safety .dl-section-tag{background:rgba(217,58,58,.15);color:#ff6b6b}
 .dl-safety-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.dl-safety-card{background:rgba(255,255,255,.04);padding:32px 28px;border-left:1px solid rgba(255,255,255,.08);border-radius:0}
+.dl-safety-card{background:rgba(255,255,255,.04);padding:32px 28px;border-radius:20px;border:1px solid rgba(255,255,255,.06)}
+.dl-safety-card .sc-icon{width:44px;height:44px;background:rgba(217,58,58,.15);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.dl-safety-card .sc-icon svg{width:22px;height:22px;color:#D93A3A}
 .dl-safety-card h3{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;color:#fff;margin-bottom:10px}
 .dl-safety-card p{font-size:13px;color:rgba(255,255,255,.55);line-height:1.6}
 
 /* ===== TALENT / IMPACT ===== */
 .dl-talent{background:#fff;padding:82px 48px}
-.dl-talent-inner{display:grid;grid-template-columns:55% 45%;gap:48px;max-width:1240px;margin:0 auto;align-items:center}
+.dl-talent-inner{display:grid;grid-template-columns:55% 45%;gap:60px;max-width:1240px;margin:0 auto;align-items:center}
 .dl-talent-statement{}
 .dl-quote-mark{font-size:180px;line-height:.6;color:#D93A3A;font-family:Georgia,serif;margin-bottom:0}
 .dl-talent h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(42px,5.5vw,78px);font-weight:700;color:#111;line-height:1.05;margin-bottom:18px}
@@ -202,11 +212,11 @@
 /* ===== FINAL CTA ===== */
 .dl-final-cta{background:linear-gradient(135deg,#2e0614 0%,#4a1020 50%,#2e0614 100%);padding:68px 48px;text-align:center}
 .dl-final-cta-inner{max-width:900px;margin:0 auto}
-.dl-final-cta h2{font-family:'Space Grotesk',sans-serif;font-size:46px;font-weight:700;color:#fff;margin-bottom:14px}
+.dl-final-cta h2{font-family:'Space Grotesk',sans-serif;font-size:46px;font-weight:700;color:#fff;margin-bottom:18px}
 .dl-final-cta h2 .highlight{color:#D93A3A}
-.dl-final-cta > .sub{font-size:16px;color:rgba(255,255,255,.7);margin-bottom:36px;line-height:1.6}
+.dl-final-cta .sub{font-size:16px;color:rgba(255,255,255,.7);margin-bottom:36px;line-height:1.6}
 .dl-final-cta .final-cta-row{display:flex;justify-content:center;gap:22px;align-items:flex-end;margin-bottom:20px}
-.dl-final-cta .final-cta-note{font-size:13px;color:rgba(255,255,255,.5)}
+.dl-final-cta .final-cta-note{font-size:13px;color:rgba(255,255,255,.5);margin-top:32px}
 .dl-final-cta .final-cta-note strong{color:rgba(255,255,255,.7);font-weight:600}
 
 /* ===== FOOTER ===== */
@@ -229,7 +239,7 @@
   .download-row{justify-content:center}
   .hero-meta{justify-content:center}
   .dl-hero-visual{margin-top:24px}
-  .hero-iphone{max-width:300px}
+  .hero-iphone{max-width:280px}
   .dl-scroll-headline h2{font-size:42px}
   .dl-feature-grid{grid-template-columns:repeat(2,1fr)}
   .dl-safety-grid{grid-template-columns:repeat(2,1fr)}
@@ -244,11 +254,10 @@
   .dl-hamburger{display:flex}
   .dl-hero-inner{padding:110px 20px 50px;gap:24px}
   .dl-hero-text h1{font-size:36px}
-  .dl-hero-text h1 .line-break{font-size:28px}
   .dl-hero-text .sub{font-size:15px}
   .download-row{flex-direction:column;align-items:center;gap:16px}
   .store-badges{flex-direction:row;justify-content:center}
-  .hero-iphone{max-width:260px}
+  .hero-iphone{max-width:240px}
   .dl-scroll-headline{padding:52px 24px}
   .dl-scroll-headline h2{font-size:32px}
   .dl-features{padding:48px 20px}
@@ -267,7 +276,6 @@
 }
 @media(max-width:480px){
   .dl-hero-text h1{font-size:30px}
-  .dl-hero-text h1 .line-break{font-size:24px}
   .dl-scroll-headline h2{font-size:26px}
   .dl-section-header h2{font-size:30px}
   .dl-final-cta h2{font-size:26px}
@@ -283,14 +291,14 @@
   }
 
   /* ----------------------------------------------------------
-     4. BUILD NAV
+     4. BUILD NAV (matches homepage nav style)
   ---------------------------------------------------------- */
   function buildNav() {
     const nav = el('nav', { className: 'dl-nav' });
 
-    // Logo
+    // Logo — white SVG to match homepage nav
     const logoLink = link(LINKS.home, '');
-    logoLink.appendChild(img(IMG.logoH, 'Pulse of Perseverance Project', 'dl-nav-logo'));
+    logoLink.appendChild(img(IMG.logoNav, 'Pulse of Perseverance Project', 'dl-nav-logo'));
     nav.appendChild(logoLink);
 
     // Desktop links
@@ -367,7 +375,7 @@
     // Left — text
     const textCol = el('div', { className: 'dl-hero-text' });
     const h1 = el('h1');
-    h1.innerHTML = 'Download the P3 App<span class="line-break">to Get Started</span>';
+    h1.innerHTML = '<span class="line1">Download the P3 App</span><br>to <span class="highlight">Get Started</span>';
     textCol.appendChild(h1);
     textCol.appendChild(el('p', { className: 'sub' }, 'Join a growing community where students unlock life-changing opportunities and mentors share their expertise to open doors. Free on iOS & Android.'));
 
@@ -488,25 +496,37 @@
   }
 
   /* ----------------------------------------------------------
-     8. SAFETY SECTION
+     8. SAFETY SECTION (with SVG icons)
   ---------------------------------------------------------- */
   function buildSafety() {
     const section = el('section', { className: 'dl-safety' });
     const inner = el('div', { className: 'dl-safety-inner' });
 
     const header = el('div', { className: 'dl-section-header' });
+    header.appendChild(el('span', { className: 'dl-section-tag' }, 'Trust & safety'));
     header.appendChild(el('h2', null, 'Built with student safety at the core.'));
     header.appendChild(el('p', null, 'Every layer of the P3 platform is designed to keep students protected \u2014 from mentor onboarding to the way conversations happen.'));
     inner.appendChild(header);
 
     const grid = el('div', { className: 'dl-safety-grid' });
+
+    // SVG icon markup for each card
+    var svgIcons = {
+      users: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+      check: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
+      shield: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>'
+    };
+
     const items = [
-      { title: 'Vetted Mentors', desc: 'Every mentor is personally invited or sourced from trusted partner organizations \u2014 then onboarded with P3 workshops.' },
-      { title: 'Manual Approval', desc: 'Every mentor account is manually reviewed and approved by P3 before they can be matched with any mentee.' },
-      { title: 'Safe by Design', desc: 'No private messaging. Mentors never see personal info. Students ask text questions; mentors respond via public video.' },
+      { icon: 'users', title: 'Vetted Mentors', desc: 'Every mentor is personally invited or sourced from trusted partner organizations \u2014 then onboarded with P3 workshops.' },
+      { icon: 'check', title: 'Manual Approval', desc: 'Every mentor account is manually reviewed and approved by P3 before they can be matched with any mentee.' },
+      { icon: 'shield', title: 'Safe by Design', desc: 'No private messaging. Mentors never see personal info. Students ask text questions; mentors respond via public video.' },
     ];
     items.forEach(item => {
       const card = el('div', { className: 'dl-safety-card' });
+      var iconWrap = el('div', { className: 'sc-icon' });
+      iconWrap.innerHTML = svgIcons[item.icon];
+      card.appendChild(iconWrap);
       card.appendChild(el('h3', null, item.title));
       card.appendChild(el('p', null, item.desc));
       grid.appendChild(card);
@@ -597,7 +617,7 @@
 
     const grid = el('div', { className: 'dl-footer-grid' });
 
-    // Brand column
+    // Brand column — white SVG logo to match homepage footer
     const brand = el('div', { className: 'dl-footer-brand' });
     brand.appendChild(img(IMG.logoW, 'Pulse of Perseverance Project'));
     brand.appendChild(el('p', null, 'Unlocking life-changing opportunities for young visionaries. Free on iOS & Android.'));
@@ -655,9 +675,15 @@
     loadFonts();
     injectCSS();
 
-    // Hide Webflow native navbar + footer if present
-    document.querySelectorAll('[data-wf-page] > .navbar, .w-nav, [data-wf-page] > footer, .footer-v2, .w--nav-menu').forEach(e => {
+    // Aggressively hide ALL Webflow native nav/footer elements
+    var hideCSS = document.createElement('style');
+    hideCSS.textContent = '.w-nav,.navbar,.footer-v2,.w--nav-menu,[data-wf-page]>.navbar,[data-wf-page]>footer,.w-nav-overlay{display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important}';
+    document.head.appendChild(hideCSS);
+
+    // Also hide via JS for any late-loading elements
+    document.querySelectorAll('.w-nav, .navbar, .footer-v2, .w--nav-menu, .w-nav-overlay').forEach(function(e) {
       e.style.display = 'none';
+      e.style.visibility = 'hidden';
     });
 
     // Create wrapper
