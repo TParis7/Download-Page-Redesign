@@ -1,5 +1,5 @@
 /* ============================================================
-   dl-page.js  v2.7.0
+   dl-page.js  v2.8.0
    Download Page — Pulse of Perseverance (P3)
    Repo: tparis7/Download-Page-Redesign
    ============================================================
@@ -121,7 +121,7 @@
 '.dl-nav-links a{color:rgba(255,255,255,.85);font-size:14px;font-weight:500;transition:color .2s}',
 '.dl-nav-links a:hover{color:#fff}',
 '.dl-nav-links .pp-home-desktop-hide{display:none}',
-'.dl-nav-links .nav-cta{background:var(--crimson);color:#fff;padding:10px 24px;border-radius:100px;font-weight:600;font-size:14px;transition:background .2s}',
+'.dl-nav-links .nav-cta{background:var(--crimson);color:#fff;padding:10px 24px;border-radius:50px;font-weight:600;font-size:14px;transition:background .2s}',
 '.dl-nav-links .nav-cta:hover{background:var(--crimson-dark)}',
 '.dl-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;z-index:1001}',
 '.dl-hamburger span{width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s}',
@@ -130,10 +130,10 @@
 '.dl-hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}',
 
 '/* Mobile overlay */',
-'.dl-mobile-menu{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,.98);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:opacity .3s}',
+'.dl-mobile-menu{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(26,26,26,.98);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;opacity:0;pointer-events:none;transition:opacity .3s}',
 '.dl-mobile-menu.open{opacity:1;pointer-events:auto}',
-'.dl-mobile-menu a{color:#fff;font-size:20px;font-weight:500}',
-'.dl-mobile-menu .mob-cta{background:var(--crimson);color:#fff;padding:14px 36px;border-radius:100px;font-weight:600;font-size:16px;margin-top:12px}',
+'.dl-mobile-menu a{color:#fff;font-family:"Space Grotesk",sans-serif;font-size:22px;font-weight:600}',
+'.dl-mobile-menu .mob-cta{background:var(--crimson);color:#fff;padding:12px 28px;border-radius:100px;font-family:"Inter",sans-serif;font-weight:600;font-size:16px;margin-top:12px}',
 
 '/* ===== HERO ===== */',
 '.dl-hero{position:relative;background:linear-gradient(135deg,#1a0510 0%,#4a1020 35%,#2a0a14 60%,#140510 100%);min-height:100vh;overflow:hidden}',
@@ -153,7 +153,7 @@
 '.store-badges{display:flex;flex-direction:column;gap:10px}',
 '.store-badges img{height:48px;cursor:pointer;transition:transform .15s}',
 '.store-badges img:hover{transform:scale(1.04)}',
-'.hero-meta{display:flex;align-items:center;gap:18px;margin-top:8px;font-size:13px;color:rgba(255,255,255,.65)}',
+'.hero-meta{display:flex;align-items:center;gap:18px;margin-top:8px;font-size:13px;color:#fff}',
 '.hero-meta strong{color:#fff!important;font-weight:600}',
 '.hero-meta .dot{width:3px;height:3px;background:rgba(255,255,255,.35);border-radius:50%}',
 '.dl-hero-visual{display:flex;justify-content:center;align-items:center}',
@@ -224,22 +224,22 @@
 '.dl-final-cta h2 .highlight{color:var(--crimson)}',
 '.dl-final-cta .sub{font-size:16px;color:rgba(255,255,255,.7);margin-bottom:36px;line-height:1.6}',
 '.dl-final-cta .final-cta-row{display:flex;justify-content:center;gap:22px;align-items:flex-end;margin-bottom:20px}',
-'.dl-final-cta .final-cta-note{font-size:13px;color:rgba(255,255,255,.5);margin-top:32px}',
-'.dl-final-cta .final-cta-note strong{color:rgba(255,255,255,.7)!important;font-weight:600}',
+'.dl-final-cta .final-cta-note{font-size:13px;color:#fff;margin-top:32px}',
+'.dl-final-cta .final-cta-note strong{color:#fff!important;font-weight:600}',
 
-'/* ===== FOOTER (pixel-match to prototype p3-footer) ===== */',
-'.dl-footer{background:#0a0a0a;padding:64px 40px 32px;color:rgba(255,255,255,.7);font-family:"Inter",-apple-system,sans-serif}',
-'.dl-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;max-width:1240px;margin:0 auto}',
+'/* ===== FOOTER (pixel-match to homepage hp-shared-sections.js) ===== */',
+'.dl-footer{background:#0a0a0a;padding:64px 40px 32px;color:rgba(255,255,255,.5)}',
+'.dl-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;max-width:1100px;margin:0 auto;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1)}',
 '.dl-footer-brand .p3-footer-logo{height:36px;width:auto;filter:brightness(0) invert(1)}',
-'.dl-footer-brand .dl-footer-tagline{font-size:14px;color:rgba(255,255,255,.6);line-height:1.7;margin-top:0}',
-'.dl-footer-brand .dl-footer-location{margin-top:10px;font-size:12px;color:rgba(255,255,255,.6)}',
-'.dl-footer-col{display:flex;flex-direction:column}',
-'.dl-footer-col h4{font-family:"Inter",sans-serif;font-size:11px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px}',
-'.dl-footer-col a{display:block;font-size:14px;color:rgba(255,255,255,.6);margin-bottom:10px;transition:color .2s;text-decoration:none}',
+'.dl-footer-brand .dl-footer-tagline{font-size:13px;color:rgba(255,255,255,.5);line-height:1.6;margin-top:0}',
+'.dl-footer-brand .dl-footer-location{margin-top:10px;font-size:12px;color:rgba(255,255,255,.4)}',
+'.dl-footer-col{display:flex;flex-direction:column;gap:4px}',
+'.dl-footer-col h4{font-family:"Inter",sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px}',
+'.dl-footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.6);padding:3px 0;transition:color .2s;text-decoration:none}',
 '.dl-footer-col a:hover{color:#fff}',
-'.dl-footer-bottom{max-width:1240px;margin:56px auto 0;padding-top:28px;border-top:1px solid rgba(255,255,255,.08);font-size:12px;color:rgba(255,255,255,.45);text-align:center}',
-'.dl-footer-bottom span{color:rgba(255,255,255,.45)}',
-'.dl-footer-bottom a{color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}',
+'.dl-footer-bottom{max-width:1100px;margin:0 auto;padding-top:24px;font-size:12px;color:rgba(255,255,255,.4);display:flex;justify-content:space-between;align-items:center}',
+'.dl-footer-bottom p{margin:0;display:flex;justify-content:space-between;width:100%}',
+'.dl-footer-bottom a{color:rgba(255,255,255,.4);text-decoration:underline;transition:color .2s}',
 '.dl-footer-bottom a:hover{color:#fff}',
 
 '/* ===== RESPONSIVE ===== */',
@@ -259,7 +259,7 @@
 '  .dl-talent-visual{flex-wrap:wrap;justify-content:center}',
 '  .dl-talent-stat{flex:1 1 220px;max-width:280px}',
 '  .dl-talent-sub{margin:28px auto 0}',
-'  .dl-footer-grid{grid-template-columns:1fr 1fr;gap:40px}',
+'  .dl-footer-grid{grid-template-columns:1fr 1fr;gap:32px}',
 '}',
 '@media(max-width:768px){',
 '  .dl-nav{padding:14px 20px}',
@@ -302,7 +302,8 @@
 '  .dl-final-cta .final-cta-row .store-badges{flex-direction:row}',
 '  .dl-footer{padding:40px 20px 24px}',
 '  .dl-footer-grid{grid-template-columns:1fr;gap:32px}',
-'  .dl-footer-bottom{flex-direction:column;gap:12px;text-align:center}',
+'  .dl-footer-bottom{text-align:center}',
+'  .dl-footer-bottom p{flex-direction:column;gap:8px;align-items:center}',
 '}',
 '@media(max-width:480px){',
 '  .dl-hero-text h1{font-size:30px}',
@@ -714,11 +715,12 @@
 
     footer.appendChild(grid);
 
-    // Bottom bar — span · link (matches prototype exactly)
+    // Bottom bar — single <p> with text + link (matches homepage exactly)
     var bottom = el('div', { className: 'dl-footer-bottom' });
-    bottom.appendChild(el('span', null, '\u00A9 2026 Pulse of Perseverance Project. All rights reserved.'));
-    bottom.appendChild(document.createTextNode(' \u00B7 '));
-    bottom.appendChild(lnk(LINKS.terms, '', 'Terms & Conditions'));
+    var bottomP = el('p');
+    bottomP.appendChild(document.createTextNode('\u00A9 2026 Pulse of Perseverance Project. All rights reserved. '));
+    bottomP.appendChild(lnk(LINKS.terms, '', 'Terms & Conditions'));
+    bottom.appendChild(bottomP);
     footer.appendChild(bottom);
 
     return footer;
