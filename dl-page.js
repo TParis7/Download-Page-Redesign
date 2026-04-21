@@ -1,10 +1,16 @@
 /* ============================================================
-   dl-page.js  v3.0.0
+   dl-page.js  v3.1.0
    Download Page — Pulse of Perseverance (P3)
    Repo: tparis7/Download-Page-Redesign
    ============================================================
    Renders the full /download page inside Webflow.
    Pixel-perfect match to HOMEPAGE (hp-shared-sections.js).
+   ----
+   v3.1.0 (2026-04-21):
+   • Hero min-height 100vh → 550px so .dl-hero stops stretching
+     with viewport height on large screens (harmonizes with
+     fm-hero on FS/FM and .hero on /partner, all ~550–606px).
+     Mobile breakpoints untouched.
    ============================================================ */
 
 (function () {
@@ -137,7 +143,7 @@
 '.dl-mobile-menu .mob-cta{background:var(--crimson);color:#fff;padding:12px 28px;border-radius:100px;font-family:"Inter",sans-serif;font-weight:600;font-size:1rem;margin-top:12px;opacity:1}',
 
 '/* ===== HERO ===== */',
-'.dl-hero{position:relative;background:linear-gradient(135deg,#1a0510 0%,#4a1020 35%,#2a0a14 60%,#140510 100%);min-height:100vh;overflow:hidden}',
+'.dl-hero{position:relative;background:linear-gradient(135deg,#1a0510 0%,#4a1020 35%,#2a0a14 60%,#140510 100%);min-height:550px;overflow:hidden}',
 '.dl-hero-video-bg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;z-index:0}',
 '.dl-hero-video-bg video{width:100%;height:100%;object-fit:cover;opacity:.15}',
 '.dl-hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(26,5,16,.85),rgba(74,16,32,.6),rgba(42,10,20,.8),rgba(20,5,16,.9));z-index:1}',
