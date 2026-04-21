@@ -1,5 +1,5 @@
 /* ============================================================
-   dl-page.js  v3.1.0
+   dl-page.js  v3.1.1
    Download Page — Pulse of Perseverance (P3)
    Repo: tparis7/Download-Page-Redesign
    ============================================================
@@ -11,6 +11,12 @@
      with viewport height on large screens (harmonizes with
      fm-hero on FS/FM and .hero on /partner, all ~550–606px).
      Mobile breakpoints untouched.
+   v3.1.1 (2026-04-21):
+   • dl-hero-inner desktop padding 140/48/100 → 100/48/40 to
+     match fm-hero's 100/0/40 rhythm. Hero now floors at ~606px
+     (iPhone mockup 466 + 140 padding), within 19px of FS/FM's
+     587 — as close as possible without shrinking the phone art.
+     Mobile breakpoints (lines ~249 and ~273) untouched.
    ============================================================ */
 
 (function () {
@@ -147,7 +153,7 @@
 '.dl-hero-video-bg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;z-index:0}',
 '.dl-hero-video-bg video{width:100%;height:100%;object-fit:cover;opacity:.15}',
 '.dl-hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(26,5,16,.85),rgba(74,16,32,.6),rgba(42,10,20,.8),rgba(20,5,16,.9));z-index:1}',
-'.dl-hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr 1fr;align-items:center;gap:40px;max-width:1240px;margin:0 auto;padding:140px 48px 100px}',
+'.dl-hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr 1fr;align-items:center;gap:40px;max-width:1240px;margin:0 auto;padding:100px 48px 40px}',
 '.dl-hero-text h1{font-family:"Space Grotesk",sans-serif;font-size:52px;font-weight:700;color:#fff;line-height:1.1;margin-bottom:24px;letter-spacing:-0.02em}',
 '.dl-hero-text h1 .line1{display:inline}',
 '.dl-hero-text h1 .highlight{color:var(--crimson)}',
