@@ -1,5 +1,5 @@
 /* ============================================================
-   dl-page.js  v3.1.1
+   dl-page.js  v3.1.3
    Download Page — Pulse of Perseverance (P3)
    Repo: tparis7/Download-Page-Redesign
    ============================================================
@@ -25,6 +25,10 @@
      still doesn't stretch with viewport height on big screens.
      Net effect vs. pre-harmonization: no vh-stretch, content-
      driven 706px on desktop. Mobile unchanged.
+   v3.1.3 (2026-07-07):
+   • Safety card copy: "No private messaging." replaced with the
+     18+ Conversations safety line (web messaging now exists and
+     is age-gated + safety-screened).
    ============================================================ */
 
 (function () {
@@ -585,7 +589,7 @@
     var items = [
       { icon: 'users', title: 'Vetted Mentors', desc: 'Every mentor is personally invited or sourced from trusted partner organizations \u2014 then onboarded with P3 workshops.' },
       { icon: 'check', title: 'Manual Approval', desc: 'Every mentor account is manually reviewed and approved by P3 before they can be matched with any mentee.' },
-      { icon: 'shield', title: 'Safe by Design', desc: 'No private messaging. Mentors never see personal info. Students ask text questions; mentors respond via public video.' },
+      { icon: 'shield', title: 'Safe by Design', desc: 'Messaging is 18+ only and safety-screened before delivery. Mentors never see personal info. Students ask text questions; mentors respond via public video.' },
     ];
     items.forEach(function(item) {
       var card = el('div', { className: 'dl-safety-card' });
