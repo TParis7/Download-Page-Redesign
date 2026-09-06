@@ -749,7 +749,7 @@
     var bottom = el('div', { className: 'dl-footer-bottom' });
     var bottomP = el('p');
     bottomP.appendChild(document.createTextNode('\u00A9 2026 Pulse of Perseverance Project. All rights reserved. '));
-    bottomP.appendChild(lnk(LINKS.terms, '', 'Terms & Conditions'));
+    bottomP.appendChild(lnk(LINKS.terms, '', 'Terms & Policies'));
     bottom.appendChild(bottomP);
     footer.appendChild(bottom);
 
