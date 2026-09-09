@@ -12,7 +12,7 @@
   ========================================================================
   Design notes:
   - Nav + Footer markup/styles mirror the Homepage mockup (same tokens).
-  - Typography tokens (Inter + Space Grotesk) match Homepage exactly.
+  - Typography tokens (Plus Jakarta Sans + Bricolage Grotesque) match Homepage exactly.
   - Hero load: P3 logo reveals big in centre → scales down to nav position,
     then iPhone mockup scales in front-and-centre (Seen-style).
   - Scroll-linked text: headline words shift from gray to dark as they
@@ -27,11 +27,11 @@
   ========================================================================
 -->
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Plus+Jakarta+Sans:wght@400..800&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: 'Inter', -apple-system, sans-serif; color: #1a1a1a; background: #fff; line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+body { font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; color: #1a1a1a; background: #fff; line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
 
@@ -83,7 +83,7 @@ body.intro-done .p3-nav { opacity: 1; }
   color: rgba(255,255,255,0.85);
   text-decoration: none;
   transition: color var(--transition);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 .p3-nav-link:hover { color: #fff; }
 .p3-nav-cta {
@@ -91,7 +91,7 @@ body.intro-done .p3-nav { opacity: 1; }
   padding: 12px 28px; border-radius: 100px;
   font-weight: 600; font-size: 14px;
   text-decoration: none;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   transition: opacity var(--transition), transform var(--transition);
   display: inline-flex; align-items: center;
 }
@@ -128,7 +128,7 @@ body.intro-done .p3-nav { opacity: 1; }
   color: #fff; font-size: 1.4rem; font-weight: 600;
   text-decoration: none; opacity: 0.8;
   transition: opacity 0.3s;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
 }
 .pp-mob-overlay-link:hover { opacity: 1; }
 .pp-mob-overlay-cta {
@@ -192,7 +192,7 @@ body.intro-done .hero-inner { opacity: 1; transform: translateY(0); }
   background: rgba(255,255,255,0.1); padding: 6px 16px; border-radius: 50px; margin-bottom: 16px;
 }
 .hero h1 {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-size: clamp(34px, 4.2vw, 52px); font-weight: 700;
   line-height: 1.1; color: #fff; margin-bottom: 24px;
   letter-spacing: -0.02em;
@@ -256,7 +256,7 @@ body.intro-done .hero-visual::before { opacity: 1; }
   max-width: 1100px; margin: 0 auto; text-align: center;
 }
 .scroll-headline h2 {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-size: clamp(32px, 4.2vw, 56px);
   font-weight: 700;
   line-height: 1.1;
@@ -290,7 +290,7 @@ body.intro-done .hero-visual::before { opacity: 1; }
 .tag-light { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); }
 .section-header { text-align: center; margin-bottom: 48px; }
 .section-header h2 {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-size: clamp(28px, 3.4vw, 42px); font-weight: 700;
   line-height: 1.15; max-width: 720px; margin: 0 auto;
 }
@@ -335,7 +335,7 @@ body.intro-done .hero-visual::before { opacity: 1; }
   position: relative; z-index: 1;
   font-size: 10px; font-weight: 700; letter-spacing: 1.4px;
   text-transform: uppercase; color: rgba(74,16,32,0.55);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 .feature-card .fc-body {
   padding: 20px 22px 24px;
@@ -343,7 +343,7 @@ body.intro-done .hero-visual::before { opacity: 1; }
   display: flex; flex-direction: column;
 }
 .feature-card h3 {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-size: 18px; font-weight: 700; color: var(--dark);
   line-height: 1.25; margin-bottom: 8px;
 }
@@ -383,7 +383,7 @@ body.intro-done .hero-visual::before { opacity: 1; }
 }
 .safety-lock svg { width: 34px; height: 34px; }
 .safety-header h2 {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-size: clamp(28px, 3.4vw, 42px); font-weight: 700;
   line-height: 1.15; color: #fff; max-width: 720px; margin: 0 auto 14px;
 }
@@ -409,7 +409,7 @@ body.intro-done .hero-visual::before { opacity: 1; }
 }
 .safety-card .sc-icon svg { width: 22px; height: 22px; }
 .safety-card h3 {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-size: 18px; font-weight: 700; color: #fff;
   line-height: 1.25; margin-bottom: 8px;
 }
@@ -437,13 +437,13 @@ body.intro-done .hero-visual::before { opacity: 1; }
 }
 .talent-statement { position: relative; }
 .talent-statement .quote-mark {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-size: 180px; line-height: 0.6; color: var(--crimson);
   opacity: 0.15; position: absolute; top: -40px; left: -20px;
   pointer-events: none;
 }
 .talent-statement h2 {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-size: clamp(40px, 5.8vw, 80px); font-weight: 700;
   line-height: 1.02; color: var(--dark); letter-spacing: -0.03em;
   position: relative;
@@ -471,7 +471,7 @@ body.intro-done .hero-visual::before { opacity: 1; }
 }
 .talent-stat-card:hover { transform: translateX(4px); box-shadow: 0 12px 30px rgba(74,16,32,0.08); }
 .talent-stat-card .num {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-size: 42px; font-weight: 700;
   line-height: 1; color: var(--dark); letter-spacing: -0.02em;
 }
@@ -492,7 +492,7 @@ body.intro-done .hero-visual::before { opacity: 1; }
 }
 .final-cta-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
 .final-cta h2 {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-size: clamp(30px, 3.6vw, 46px); font-weight: 700;
   line-height: 1.12; color: #fff; margin-bottom: 18px; letter-spacing: -0.02em;
 }
@@ -522,7 +522,7 @@ body.intro-done .hero-visual::before { opacity: 1; }
 .p3-footer-col h4 {
   color: #fff; font-size: 11px; font-weight: 700;
   text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 .p3-footer-col a {
   display: block; font-size: 14px; color: rgba(255,255,255,0.6);
