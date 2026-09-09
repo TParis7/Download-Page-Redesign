@@ -1,5 +1,5 @@
 /* ============================================================
-   dl-page.js  v3.1.3
+   dl-page.js  v3.2.0
    Download Page — Pulse of Perseverance (P3)
    Repo: tparis7/Download-Page-Redesign
    ============================================================
@@ -25,6 +25,13 @@
      still doesn't stretch with viewport height on big screens.
      Net effect vs. pre-harmonization: no vh-stretch, content-
      driven 706px on desktop. Mobile unchanged.
+   v3.2.0 (2026-09-09):
+   • Hero inner padding 140/48/100 -> 120/48/64 so the hero stops
+     at its content like /for-students (Thomas). The v3.1.2 revert
+     below is superseded.
+   • Nav v2: the shared public-site nav (Website Folder/site-chrome/
+     apply-nav.py) replaces the page's own .dl-nav / .dl-mobile-menu.
+   • "900+ users connected" -> 1,200+.
    v3.1.3 (2026-07-07):
    • Safety card copy: "No private messaging." replaced with the
      18+ Conversations safety line (web messaging now exists and
@@ -165,7 +172,7 @@
 '.dl-hero-video-bg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;z-index:0}',
 '.dl-hero-video-bg video{width:100%;height:100%;object-fit:cover;opacity:.15}',
 '.dl-hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(26,5,16,.85),rgba(74,16,32,.6),rgba(42,10,20,.8),rgba(20,5,16,.9));z-index:1}',
-'.dl-hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr 1fr;align-items:center;gap:40px;max-width:1240px;margin:0 auto;padding:140px 48px 100px}',
+'.dl-hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr 1fr;align-items:center;gap:40px;max-width:1240px;margin:0 auto;padding:120px 48px 64px}',
 '.dl-hero-text h1{font-family:"Bricolage Grotesque",sans-serif;font-size:52px;font-weight:700;color:#fff;line-height:1.1;margin-bottom:24px;letter-spacing:-0.02em}',
 '.dl-hero-text h1 .line1{display:inline}',
 '.dl-hero-text h1 .highlight{color:var(--crimson)}',
