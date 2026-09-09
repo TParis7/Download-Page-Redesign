@@ -70,7 +70,7 @@
     android:  'https://play.google.com/store/apps/details?id=com.P3.prod',
     home:     'https://www.pulseofp3.org/',
     students: 'https://www.pulseofp3.org/for-students',
-    partner:  'https://www.pulseofp3.org/partner',
+    partner:  'https://enterprise.pulseofp3.org/overview',
     mentors:  'https://www.pulseofp3.org/for-mentors',
     about:    'https://www.pulseofp3.org/about/about',
     scholars: 'https://www.pulseofp3.org/scholarships',
