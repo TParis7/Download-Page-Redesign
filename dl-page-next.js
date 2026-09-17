@@ -40,9 +40,10 @@
      Four phones (Conversations 18+, Pulse AI 18+, Career
      Timeline, Dark mode) in the /redesign device frame.
    • Scroll headline ("The free, always-on...") removed.
-   • Feature grid: photos -> the redesigned app's screens in the
-     same frame. Mentorship Guide -> Conversations, Mentor
-     Question Portal -> Ask a Mentor.
+   • Feature grid keeps its photos; the Milestone Tracking card
+     shows the redesign's Ascent artwork, zoomed. Mentorship
+     Guide -> Conversations, Mentor Question Portal -> Ask a
+     Mentor.
    • Safe by Design: names the 18+ AI features and the permission
      step, still three lines.
    v3.3.0 (2026-09-17):
@@ -81,11 +82,13 @@
     scrPulse: GH + 'phone-pulse-ai.webp',
     scrTime:  GH + 'phone-career-timeline.webp',
     scrDark:  GH + 'phone-dark-mode.webp',
-    scrMentors: GH + 'phone-mentors.webp',
-    scrMiles: GH + 'phone-milestones-full.webp',       // full height: its top is a gradient
-    scrOpps:  GH + 'phone-opportunities.webp',
-    scrScholar: GH + 'phone-scholarships.webp',
-    scrHome:  GH + 'phone-home.webp',
+    // Feature grid photos; the Milestone card is the redesign's Ascent artwork, zoomed.
+    feat1:    GH + 'New%20Mentor.jpeg',
+    feat2:    GH + 'milestones-artwork.webp',
+    feat3:    GH + 'IMG_1421.jpg',
+    feat4:    GH + '224A1273_Original.jpg',
+    feat5:    WF + '69b02f65f0068e9fb16f0e44_VersusWoman.png',
+    feat6:    GH + 'Video%20collage.jpeg',
     video:    GH + 'p3-hero-bg.mp4',
   };
 
@@ -212,7 +215,7 @@
 '.dl-shot{position:relative;overflow:hidden;background:linear-gradient(160deg,#f4eee8 0%,#e9e1da 100%)}',
 '.dl-shot-tall{height:300px;background:linear-gradient(160deg,#f7f2ed 0%,#ece4dc 100%)}',
 '.dl-page .dl-shot .dl-phone{position:absolute;left:50%;top:22px;transform:translateX(-50%);width:50%}',
-'.dl-page .dl-shot-tall .dl-phone{width:60%;top:26px}',
+'.dl-page .dl-shot-tall .dl-phone{width:76%;top:18px}',
 '/* The /redesign device frame, sized from its own container (cqw = a share of the phone width). */',
 '.dl-page .dl-phone{container-type:inline-size}',
 '.dl-page .dl-phone-frame{position:relative;padding:3.2cqw;border-radius:15.5cqw;background:linear-gradient(158deg,#4a4148 0%,#141115 34%,#0d0b0e 68%,#332b33 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 0 0 1px rgba(255,255,255,.12),0 2px 4px rgba(0,0,0,.28),0 18px 36px rgba(20,5,16,.3)}',
@@ -235,7 +238,8 @@
 '.dl-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}',
 '.dl-feature-card{background:#fff;border-radius:var(--radius-lg);overflow:hidden;transition:transform var(--transition),box-shadow var(--transition)}',
 '.dl-feature-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.08)}',
-'.dl-fc-vis{height:220px}',
+'.dl-fc-vis{height:180px;background:var(--warm-gray-2);overflow:hidden;display:flex;align-items:center;justify-content:center}',
+'.dl-fc-vis img{width:100%;height:100%;object-fit:cover}',
 '.dl-fc-body{padding:20px 22px 24px}',
 '.dl-fc-body h3{font-family:"Bricolage Grotesque",sans-serif;font-size:18px;font-weight:600;color:var(--dark);margin-bottom:8px;letter-spacing:-0.005em;}',
 '.dl-fc-body p{font-size:13px;color:var(--light-text);line-height:1.55}',
@@ -331,15 +335,14 @@
 '  .dl-new{padding:48px 20px 40px}',
 '  .dl-new-grid{gap:12px}',
 '  .dl-shot-tall{height:210px}',
-'  .dl-page .dl-shot-tall .dl-phone{width:66%;top:18px}',
+'  .dl-page .dl-shot-tall .dl-phone{width:80%;top:14px}',
 '  .dl-new-body{padding:14px 14px 18px}',
 '  .dl-new-body h3{font-size:14px;margin-bottom:6px}',
 '  .dl-new-body p{font-size:12px;line-height:1.5}',
 '  .dl-new-note{font-size:12px;margin-top:18px}',
-'  .dl-page .dl-fc-vis .dl-phone{width:62%;top:16px}',
 '  .dl-features{padding:48px 20px}',
 '  .dl-feature-grid{grid-template-columns:1fr 1fr;gap:12px}',
-'  .dl-fc-vis{height:150px}',
+'  .dl-fc-vis{height:120px}',
 '  .dl-fc-body{padding:14px 14px 18px}',
 '  .dl-fc-body h3{font-size:14px;margin-bottom:6px;line-height:1.25}',
 '  .dl-fc-body p{font-size:12px;line-height:1.5}',
@@ -607,17 +610,17 @@
 
     var grid = el('div', { className: 'dl-feature-grid' });
     var cards = [
-      { img: IMG.scrMentors, status: '#ced5d7', title: 'AI Smart Match', desc: 'AI-powered matching pairs students with the right industry mentor in seconds, across any field.' },
-      { img: IMG.scrMiles, full: true, title: 'Milestone Tracking', desc: 'Students check off achievements, from first campus visit to first job, building longitudinal data.' },
-      { img: IMG.scrOpps, status: '#ced5d7', title: 'Career Opportunities', desc: 'A full marketplace of internships, jobs, college-readiness resources, and diverse career pathways.' },
-      { img: IMG.scrScholar, status: '#ced5d7', title: 'Monthly Scholarships', desc: "Reducing financial barriers with P3\u2019s own monthly scholarship plus hundreds of curated awards." },
-      { img: IMG.scrConv, status: '#bfcacd', title: 'Conversations', tag: '18+', desc: 'Private, safety-screened messages with your matched mentor, on your phone and on the web.' },
-      { img: IMG.scrHome, status: '#ced5d7', title: 'Ask a Mentor', desc: 'Ask a text question any time. Mentors answer in public video, so one answer helps many students.' },
+      { img: IMG.feat1, alt: 'AI Smart Match', title: 'AI Smart Match', desc: 'AI-powered matching pairs students with the right industry mentor in seconds, across any field.' },
+      { img: IMG.feat2, alt: 'The Milestones climb in the P3 app', title: 'Milestone Tracking', desc: 'Students check off achievements, from first campus visit to first job, building longitudinal data.' },
+      { img: IMG.feat3, alt: 'Career Opportunities', title: 'Career Opportunities', desc: 'A full marketplace of internships, jobs, college-readiness resources, and diverse career pathways.' },
+      { img: IMG.feat4, alt: 'Monthly Scholarships', title: 'Monthly Scholarships', desc: "Reducing financial barriers with P3\u2019s own monthly scholarship plus hundreds of curated awards." },
+      { img: IMG.feat5, alt: 'Conversations', title: 'Conversations', tag: '18+', desc: 'Private, safety-screened messages with your matched mentor, on your phone and on the web.' },
+      { img: IMG.feat6, alt: 'Ask a Mentor', title: 'Ask a Mentor', desc: 'Ask a text question any time. Mentors answer in public video, so one answer helps many students.' },
     ];
     cards.forEach(function(c) {
       var card = el('div', { className: 'dl-feature-card' });
-      var vis = el('div', { className: 'dl-fc-vis dl-shot' });
-      vis.appendChild(phoneShot(c.img, c.title + ' in the P3 app', c.status, c.full));
+      var vis = el('div', { className: 'dl-fc-vis' });
+      vis.appendChild(img(c.img, c.alt));
       card.appendChild(vis);
       var body = el('div', { className: 'dl-fc-body' });
       var h3 = el('h3', null, c.title);
