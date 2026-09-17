@@ -1,5 +1,5 @@
 /* ============================================================
-   dl-page.js  v3.3.0
+   dl-page.js  v3.4.0
    Download Page — Pulse of Perseverance (P3)
    Repo: tparis7/Download-Page-Redesign
    ============================================================
@@ -32,6 +32,19 @@
    • Nav v2: the shared public-site nav (Website Folder/site-chrome/
      apply-nav.py) replaces the page's own .dl-nav / .dl-mobile-menu.
    • "900+ users connected" -> 1,200+.
+   v3.4.0 (2026-09-17):
+   • Desktop hero mockup gains a third phone (the video player)
+     via <picture>; phones and tablets keep the two-phone image.
+     Same 960x1119 footprint, so the hero height does not move.
+   • "What's new" band after the hero: Same mission. Upgraded.
+     Four phones (Conversations 18+, Pulse AI 18+, Career
+     Timeline, Dark mode) in the /redesign device frame.
+   • Scroll headline ("The free, always-on...") removed.
+   • Feature grid: photos -> the redesigned app's screens in the
+     same frame. Mentorship Guide -> Conversations, Mentor
+     Question Portal -> Ask a Mentor.
+   • Safe by Design: names the 18+ AI features and the permission
+     step, still three lines.
    v3.3.0 (2026-09-17):
    • Hero mockup: iphone-mockup-v2.png (the old app) -> the
      redesigned app, two phones at the same 960x1119 footprint
@@ -61,13 +74,18 @@
     qr:       WF + '69b02f65f0068e9fb16f0ddd_8e3543_be5994c0c9a84d0e9a649cbb4259a7b4~mv2.avif',
     ios:      WF + '69b02f65f0068e9fb16f0ddf_ios%20badge.svg',
     android:  WF + '69b02f65f0068e9fb16f0de0_android%20badge.svg',
-    iphone:   GH + 'iphone-mockup-redesign.webp',
-    feat1:    GH + 'New%20Mentor.jpeg',
-    feat2:    GH + 'Milestone%20Pathways%20Mobile.png',
-    feat3:    GH + 'IMG_1421.jpg',
-    feat4:    GH + '224A1273_Original.jpg',
-    feat5:    WF + '69b02f65f0068e9fb16f0e44_VersusWoman.png',
-    feat6:    GH + 'Video%20collage.jpeg',
+    iphone:   GH + 'iphone-mockup-redesign.webp',      // two phones: Home, Milestones
+    iphone3:  GH + 'iphone-mockup-redesign-3.webp',    // desktop: plus the video player
+    // App screens, status bar cropped (148 of 1320px); the frame paints it back.
+    scrConv:  GH + 'phone-conversations.webp',
+    scrPulse: GH + 'phone-pulse-ai.webp',
+    scrTime:  GH + 'phone-career-timeline.webp',
+    scrDark:  GH + 'phone-dark-mode.webp',
+    scrMentors: GH + 'phone-mentors.webp',
+    scrMiles: GH + 'phone-milestones-full.webp',       // full height: its top is a gradient
+    scrOpps:  GH + 'phone-opportunities.webp',
+    scrScholar: GH + 'phone-scholarships.webp',
+    scrHome:  GH + 'phone-home.webp',
     video:    GH + 'p3-hero-bg.mp4',
   };
 
@@ -178,12 +196,33 @@
 '.dl-hero-visual{display:flex;justify-content:center;align-items:center}',
 '.hero-iphone{width:400px;max-width:100%;filter:drop-shadow(0 40px 80px rgba(0,0,0,.55));position:relative;z-index:2}',
 
-'/* ===== SCROLL HEADLINE ===== */',
-'.dl-scroll-headline{background:#fff;padding:86px 48px;text-align:center}',
-'.dl-scroll-headline h2{font-family:"Bricolage Grotesque",sans-serif;font-size:56px;font-weight:600;line-height:1.1;max-width:820px;margin:0 auto;letter-spacing:-0.01em;}',
-'.dl-scroll-headline h2 .word{display:inline-block;color:#e6e2dd;transition:color .6s ease;margin:0 6px}',
-'.dl-scroll-headline h2 .word.active{color:#1a1a1a}',
-'.dl-scroll-headline h2 .word.accent.active{color:var(--crimson)}',
+'/* ===== WHAT IS NEW (Sep 2026, the redesign) ===== */',
+'.dl-new{background:#fff;padding:64px 48px 56px;position:relative;overflow:hidden}',
+'.dl-new::before{content:"";position:absolute;left:50%;top:-160px;width:900px;height:440px;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(217,58,58,.10),transparent 70%);pointer-events:none}',
+'.dl-new-inner{max-width:1240px;margin:0 auto;position:relative}',
+'.dl-new-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}',
+'.dl-new-card{background:var(--warm-gray);border-radius:var(--radius-lg);overflow:hidden;transition:transform var(--transition),box-shadow var(--transition)}',
+'.dl-new-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.08)}',
+'.dl-new-body{padding:18px 20px 22px}',
+'.dl-new-body h3{font-family:"Bricolage Grotesque",sans-serif;font-size:17px;font-weight:600;color:var(--dark);margin-bottom:6px;letter-spacing:-0.005em}',
+'.dl-new-body p{font-size:13px;color:var(--light-text);line-height:1.55}',
+'.dl-new-note{text-align:center;font-size:13px;color:var(--light-text);margin-top:26px}',
+'.dl-age{display:inline-block;margin-left:8px;vertical-align:2px;font-family:"Plus Jakarta Sans",sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--crimson);background:rgba(217,58,58,.09);border-radius:50px;padding:3px 8px;line-height:1}',
+'/* A phone standing in a tile, clipped at the tile bottom so the top of the screen shows. */',
+'.dl-shot{position:relative;overflow:hidden;background:linear-gradient(160deg,#f4eee8 0%,#e9e1da 100%)}',
+'.dl-shot-tall{height:300px;background:linear-gradient(160deg,#f7f2ed 0%,#ece4dc 100%)}',
+'.dl-page .dl-shot .dl-phone{position:absolute;left:50%;top:22px;transform:translateX(-50%);width:50%}',
+'.dl-page .dl-shot-tall .dl-phone{width:60%;top:26px}',
+'/* The /redesign device frame, sized from its own container (cqw = a share of the phone width). */',
+'.dl-page .dl-phone{container-type:inline-size}',
+'.dl-page .dl-phone-frame{position:relative;padding:3.2cqw;border-radius:15.5cqw;background:linear-gradient(158deg,#4a4148 0%,#141115 34%,#0d0b0e 68%,#332b33 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 0 0 1px rgba(255,255,255,.12),0 2px 4px rgba(0,0,0,.28),0 18px 36px rgba(20,5,16,.3)}',
+'.dl-page .dl-phone-frame::before{content:"";position:absolute;left:-1.1cqw;top:19cqw;width:1.1cqw;height:7cqw;border-radius:.8cqw 0 0 .8cqw;background:#28232a;box-shadow:0 11cqw 0 0 #28232a,0 21.5cqw 0 0 #28232a}',
+'.dl-page .dl-phone-frame::after{content:"";position:absolute;right:-1.1cqw;top:31cqw;width:1.1cqw;height:15cqw;border-radius:0 .8cqw .8cqw 0;background:#28232a}',
+'.dl-page .dl-phone-screen{position:relative;border-radius:12.3cqw;overflow:hidden;background:var(--status,#ced5d7)}',
+'.dl-page .dl-phone-screen::before{content:"";display:block;padding-top:11.2%}',
+'.dl-page .dl-phone-screen.full::before{display:none}',
+'.dl-page .dl-phone-screen::after{content:"";position:absolute;top:2.4cqw;left:50%;transform:translateX(-50%);width:27.8cqw;height:8.9cqw;border-radius:4.5cqw;background:#000}',
+'.dl-page .dl-phone-screen img{display:block;width:100%;height:auto}',
 
 '/* ===== FEATURES ===== */',
 '.dl-features{background:var(--warm-gray);padding:44px 48px}',
@@ -196,8 +235,7 @@
 '.dl-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}',
 '.dl-feature-card{background:#fff;border-radius:var(--radius-lg);overflow:hidden;transition:transform var(--transition),box-shadow var(--transition)}',
 '.dl-feature-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.08)}',
-'.dl-fc-vis{height:180px;background:var(--warm-gray-2);overflow:hidden;display:flex;align-items:center;justify-content:center}',
-'.dl-fc-vis img{width:100%;height:100%;object-fit:cover}',
+'.dl-fc-vis{height:220px}',
 '.dl-fc-body{padding:20px 22px 24px}',
 '.dl-fc-body h3{font-family:"Bricolage Grotesque",sans-serif;font-size:18px;font-weight:600;color:var(--dark);margin-bottom:8px;letter-spacing:-0.005em;}',
 '.dl-fc-body p{font-size:13px;color:var(--light-text);line-height:1.55}',
@@ -270,7 +308,7 @@
 '  .hero-meta{justify-content:center}',
 '  .dl-hero-visual{margin-top:24px}',
 '  .hero-iphone{width:300px}',
-'  .dl-scroll-headline h2{font-size:42px}',
+'  .dl-new-grid{grid-template-columns:repeat(2,1fr)}',
 '  .dl-feature-grid{grid-template-columns:repeat(2,1fr)}',
 '  .dl-safety-grid{grid-template-columns:repeat(2,1fr)}',
 '  .dl-talent-inner{grid-template-columns:1fr;gap:48px;text-align:center}',
@@ -290,11 +328,18 @@
 '  .download-row{flex-direction:column;align-items:center;gap:16px}',
 '  .store-badges{flex-direction:row;justify-content:center}',
 '  .hero-iphone{width:260px}',
-'  .dl-scroll-headline{padding:52px 24px}',
-'  .dl-scroll-headline h2{font-size:32px}',
+'  .dl-new{padding:48px 20px 40px}',
+'  .dl-new-grid{gap:12px}',
+'  .dl-shot-tall{height:210px}',
+'  .dl-page .dl-shot-tall .dl-phone{width:66%;top:18px}',
+'  .dl-new-body{padding:14px 14px 18px}',
+'  .dl-new-body h3{font-size:14px;margin-bottom:6px}',
+'  .dl-new-body p{font-size:12px;line-height:1.5}',
+'  .dl-new-note{font-size:12px;margin-top:18px}',
+'  .dl-page .dl-fc-vis .dl-phone{width:62%;top:16px}',
 '  .dl-features{padding:48px 20px}',
 '  .dl-feature-grid{grid-template-columns:1fr 1fr;gap:12px}',
-'  .dl-fc-vis{height:120px}',
+'  .dl-fc-vis{height:150px}',
 '  .dl-fc-body{padding:14px 14px 18px}',
 '  .dl-fc-body h3{font-size:14px;margin-bottom:6px;line-height:1.25}',
 '  .dl-fc-body p{font-size:12px;line-height:1.5}',
@@ -327,7 +372,6 @@
 '}',
 '@media(max-width:480px){',
 '  .dl-hero-text h1{font-size:30px}',
-'  .dl-scroll-headline h2{font-size:26px}',
 '  .dl-section-header h2{font-size:30px}',
 '  .dl-final-cta h2{font-size:26px}',
 '  .store-badges img{height:42px}',
@@ -473,9 +517,17 @@
     textCol.appendChild(meta);
     inner.appendChild(textCol);
 
-    // Right — phone
+    // Right — phones. Desktop gets the three-phone render, phones and
+    // tablets the two-phone one; both are 960x1119 so the hero height holds.
     var visual = el('div', { className: 'dl-hero-visual' });
-    visual.appendChild(img(IMG.iphone, 'P3 App shown on iPhone', 'hero-iphone'));
+    var pic = document.createElement('picture');
+    var src3 = document.createElement('source');
+    src3.media = '(min-width: 1025px)'; src3.srcset = IMG.iphone3; src3.type = 'image/webp';
+    pic.appendChild(src3);
+    var phones = img(IMG.iphone, 'The redesigned P3 app on iPhone', 'hero-iphone');
+    phones.loading = 'eager'; phones.setAttribute('fetchpriority', 'high');
+    pic.appendChild(phones);
+    visual.appendChild(pic);
     inner.appendChild(visual);
 
     section.appendChild(inner);
@@ -483,40 +535,58 @@
   }
 
   /* ----------------------------------------------------------
-     6. SCROLL HEADLINE
+     6. WHAT'S NEW — the redesign (Sep 2026)
   ---------------------------------------------------------- */
-  function buildScrollHeadline() {
-    var section = el('section', { className: 'dl-scroll-headline' });
+  // A phone in the /redesign page's device frame. Captures are cropped of
+  // their status bar; the screen paints a band in the capture's own top
+  // colour (--status) and draws the island. A capture whose top is a
+  // gradient ships full height instead (full = true).
+  function phoneShot(src, alt, status, full) {
+    var ph = el('div', { className: 'dl-phone' });
+    var frame = el('div', { className: 'dl-phone-frame' });
+    var screen = el('div', { className: 'dl-phone-screen' + (full ? ' full' : '') });
+    if (!full && status) screen.style.setProperty('--status', status);
+    screen.appendChild(img(src, alt));
+    frame.appendChild(screen);
+    ph.appendChild(frame);
+    return ph;
+  }
+
+  function buildWhatsNew() {
+    var section = el('section', { className: 'dl-new', id: 'whats-new' });
+    var inner = el('div', { className: 'dl-new-inner' });
+
+    var header = el('div', { className: 'dl-section-header' });
+    header.appendChild(el('span', { className: 'dl-section-tag' }, 'What\u2019s new'));
     var h2 = el('h2');
-    var words = [
-      { text: 'The', accent: false },
-      { text: 'free,', accent: false },
-      { text: 'always-on', accent: false },
-      { text: 'digital mentorship', accent: true },
-      { text: 'platform', accent: false },
-      { text: 'for', accent: false },
-      { text: "today\u2019s", accent: false },
-      { text: 'generation.', accent: false },
+    h2.innerHTML = 'Same mission. <span>Upgraded.</span>';
+    header.appendChild(h2);
+    header.appendChild(el('p', null, 'A major upgrade, not a visual refresh. Every screen rebuilt, four capabilities that are entirely new, and the same account you already have. Update from the App Store.'));
+    inner.appendChild(header);
+
+    var grid = el('div', { className: 'dl-new-grid' });
+    var items = [
+      { img: IMG.scrConv,  status: '#bfcacd', title: 'Conversations', tag: '18+', desc: 'Private messages with your mentor, safety-screened before delivery.' },
+      { img: IMG.scrPulse, status: '#f6f2ff', title: 'Pulse AI', tag: '18+', desc: 'A career coach that knows your profile and answers right now.' },
+      { img: IMG.scrTime,  status: '#ced5d7', title: 'Career Timeline', desc: 'Map where you have been and where you are headed.' },
+      { img: IMG.scrDark,  status: '#140f1f', title: 'Dark mode', desc: 'Follows your device, day or night.' },
     ];
-    words.forEach(function(w) {
-      var span = el('span', { className: 'word' + (w.accent ? ' accent' : '') }, w.text);
-      h2.appendChild(span);
-      h2.appendChild(document.createTextNode(' '));
+    items.forEach(function(it) {
+      var card = el('div', { className: 'dl-new-card' });
+      var vis = el('div', { className: 'dl-shot dl-shot-tall' });
+      vis.appendChild(phoneShot(it.img, it.title + ' in the P3 app', it.status));
+      card.appendChild(vis);
+      var body = el('div', { className: 'dl-new-body' });
+      var h3 = el('h3', null, it.title);
+      if (it.tag) h3.appendChild(el('span', { className: 'dl-age' }, it.tag));
+      body.appendChild(h3);
+      body.appendChild(el('p', null, it.desc));
+      card.appendChild(body);
+      grid.appendChild(card);
     });
-    section.appendChild(h2);
-
-    function revealWords() {
-      var rect = section.getBoundingClientRect();
-      var vh = window.innerHeight;
-      var progress = 1 - (rect.top / (vh * 0.6));
-      var spans = h2.querySelectorAll('.word');
-      spans.forEach(function(s, i) {
-        s.classList.toggle('active', progress > i / spans.length);
-      });
-    }
-    window.addEventListener('scroll', revealWords, { passive: true });
-    revealWords();
-
+    inner.appendChild(grid);
+    inner.appendChild(el('p', { className: 'dl-new-note' }, 'Updated on iOS now. Android follows in October.'));
+    section.appendChild(inner);
     return section;
   }
 
@@ -532,25 +602,27 @@
     var h2 = el('h2');
     h2.innerHTML = 'Built for <span>ambitious</span> students.';
     header.appendChild(h2);
-    header.appendChild(el('p', null, 'Six tools designed to turn curiosity into career momentum \u2014 without the friction.'));
+    header.appendChild(el('p', null, 'Six tools designed to turn curiosity into career momentum, without the friction.'));
     inner.appendChild(header);
 
     var grid = el('div', { className: 'dl-feature-grid' });
     var cards = [
-      { img: IMG.feat1, alt: 'AI Smart Match', title: 'AI Smart Match', desc: 'AI-powered matching pairs students with the right industry mentor in seconds \u2014 across any field.' },
-      { img: IMG.feat2, alt: 'Milestone Tracking', title: 'Milestone Tracking', desc: 'Students check off achievements \u2014 from first campus visit to first job \u2014 building longitudinal data.' },
-      { img: IMG.feat3, alt: 'Career Opportunities', title: 'Career Opportunities', desc: 'A full marketplace of internships, jobs, college-readiness resources, and diverse career pathways.' },
-      { img: IMG.feat4, alt: 'Monthly Scholarships', title: 'Monthly Scholarships', desc: "Reducing financial barriers with P3\u2019s own monthly scholarship plus hundreds of curated awards." },
-      { img: IMG.feat5, alt: 'Mentorship Guide', title: 'Mentorship Guide', desc: 'A peer-reviewed guide co-developed with university partners to maximize mentor effectiveness.' },
-      { img: IMG.feat6, alt: 'Mentor Question Portal', title: 'Mentor Question Portal', desc: 'Any student \u2014 even unregistered \u2014 can ask mentors questions 24/7, removing every barrier to guidance.' },
+      { img: IMG.scrMentors, status: '#ced5d7', title: 'AI Smart Match', desc: 'AI-powered matching pairs students with the right industry mentor in seconds, across any field.' },
+      { img: IMG.scrMiles, full: true, title: 'Milestone Tracking', desc: 'Students check off achievements, from first campus visit to first job, building longitudinal data.' },
+      { img: IMG.scrOpps, status: '#ced5d7', title: 'Career Opportunities', desc: 'A full marketplace of internships, jobs, college-readiness resources, and diverse career pathways.' },
+      { img: IMG.scrScholar, status: '#ced5d7', title: 'Monthly Scholarships', desc: "Reducing financial barriers with P3\u2019s own monthly scholarship plus hundreds of curated awards." },
+      { img: IMG.scrConv, status: '#bfcacd', title: 'Conversations', tag: '18+', desc: 'Private, safety-screened messages with your matched mentor, on your phone and on the web.' },
+      { img: IMG.scrHome, status: '#ced5d7', title: 'Ask a Mentor', desc: 'Ask a text question any time. Mentors answer in public video, so one answer helps many students.' },
     ];
     cards.forEach(function(c) {
       var card = el('div', { className: 'dl-feature-card' });
-      var vis = el('div', { className: 'dl-fc-vis' });
-      vis.appendChild(img(c.img, c.alt));
+      var vis = el('div', { className: 'dl-fc-vis dl-shot' });
+      vis.appendChild(phoneShot(c.img, c.title + ' in the P3 app', c.status, c.full));
       card.appendChild(vis);
       var body = el('div', { className: 'dl-fc-body' });
-      body.appendChild(el('h3', null, c.title));
+      var h3 = el('h3', null, c.title);
+      if (c.tag) h3.appendChild(el('span', { className: 'dl-age' }, c.tag));
+      body.appendChild(h3);
       body.appendChild(el('p', null, c.desc));
       card.appendChild(body);
       grid.appendChild(card);
@@ -580,7 +652,7 @@
     var items = [
       { icon: 'users', title: 'Vetted Mentors', desc: 'Every mentor is personally invited or sourced from trusted partner organizations \u2014 then onboarded with P3 workshops.' },
       { icon: 'check', title: 'Manual Approval', desc: 'Every mentor account is manually reviewed and approved by P3 before they can be matched with any mentee.' },
-      { icon: 'shield', title: 'Safe by Design', desc: 'Messaging is 18+ only and safety-screened before delivery. Mentors never see personal info. Students ask text questions; mentors respond via public video.' },
+      { icon: 'shield', title: 'Safe by Design', desc: 'Messaging and AI are 18+, and AI asks permission first. Every message is safety-screened before delivery. Mentors never see personal info.' },
     ];
     items.forEach(function(item) {
       var card = el('div', { className: 'dl-safety-card' });
@@ -771,7 +843,7 @@
     wrapper.appendChild(navResult.nav);
     wrapper.appendChild(navResult.mobileMenu);
     wrapper.appendChild(buildHero());
-    wrapper.appendChild(buildScrollHeadline());
+    wrapper.appendChild(buildWhatsNew());
     wrapper.appendChild(buildFeatures());
     wrapper.appendChild(buildSafety());
     wrapper.appendChild(buildTalent());
