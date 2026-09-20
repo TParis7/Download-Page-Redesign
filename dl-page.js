@@ -200,7 +200,7 @@
 '.hero-iphone{width:400px;max-width:100%;filter:drop-shadow(0 40px 80px rgba(0,0,0,.55));position:relative;z-index:2}',
 
 '/* ===== WHAT IS NEW (Sep 2026, the redesign) ===== */',
-'.dl-new{background:#fff;padding:64px 48px 56px;position:relative;overflow:hidden}',
+'.dl-new{background:#fff;padding:64px 48px 36px;position:relative;overflow:hidden}',
 '.dl-new::before{content:"";position:absolute;left:50%;top:-160px;width:900px;height:440px;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(217,58,58,.10),transparent 70%);pointer-events:none}',
 '.dl-new-inner{max-width:1240px;margin:0 auto;position:relative}',
 '.dl-new-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}',
@@ -332,7 +332,7 @@
 '  .download-row{flex-direction:column;align-items:center;gap:16px}',
 '  .store-badges{flex-direction:row;justify-content:center}',
 '  .hero-iphone{width:260px}',
-'  .dl-new{padding:48px 20px 40px}',
+'  .dl-new{padding:48px 20px 26px}',
 '  .dl-new-grid{gap:12px}',
 '  .dl-shot-tall{height:210px}',
 '  .dl-page .dl-shot-tall .dl-phone{width:80%;top:14px}',
@@ -614,7 +614,7 @@
       { img: IMG.feat2, alt: 'The Milestones climb in the P3 app', title: 'Milestone Tracking', desc: 'Students check off achievements, from first campus visit to first job, building longitudinal data.' },
       { img: IMG.feat3, alt: 'Career Opportunities', title: 'Career Opportunities', desc: 'A full marketplace of internships, jobs, college-readiness resources, and diverse career pathways.' },
       { img: IMG.feat4, alt: 'Monthly Scholarships', title: 'Monthly Scholarships', desc: "Reducing financial barriers with P3\u2019s own monthly scholarship plus hundreds of curated awards." },
-      { img: IMG.feat5, alt: 'Conversations', title: 'Conversations', tag: '18+', desc: 'Private, safety-screened messages with your matched mentor, on your phone and on the web.' },
+      { img: IMG.feat5, alt: 'Mentor Community', title: 'Mentor Community', desc: 'Browse mentors across every industry, follow the ones you connect with, and request a match.' },
       { img: IMG.feat6, alt: 'Ask a Mentor', title: 'Ask a Mentor', desc: 'Ask a text question any time. Mentors answer in public video, so one answer helps many students.' },
     ];
     cards.forEach(function(c) {
