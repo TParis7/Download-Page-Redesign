@@ -76,12 +76,18 @@
     ios:      WF + '69b02f65f0068e9fb16f0ddf_ios%20badge.svg',
     android:  WF + '69b02f65f0068e9fb16f0de0_android%20badge.svg',
     iphone:   GH + 'iphone-mockup-redesign.webp',      // two phones: Home, Milestones
-    iphone3:  GH + 'iphone-mockup-redesign-3.webp',    // desktop: plus the video player
+    // Desktop mockup cropped to the phones plus a little shadow (948x1005 from
+    // 960x1119). The hero row is a fixed 466px and the text column matches it,
+    // so height is the constraint: a shorter image buys width at the same
+    // height, which is the only way to enlarge the phones without a taller
+    // header. Paired with the 440px width below.
+    iphone3:  GH + 'iphone-mockup-redesign-3-tight.webp',
     // App screens, status bar cropped (148 of 1320px); the frame paints it back.
     scrConv:  GH + 'phone-conversations.webp',
     scrPulse: GH + 'phone-pulse-ai.webp',
-    scrTime:  GH + 'phone-career-timeline.webp',
-    scrDark:  GH + 'phone-dark-mode.webp',
+    scrPath:  GH + 'phone-pathways.webp',              // Pathway discovery, scrolled into frame
+    scrDark:  GH + 'phone-dark-mode.webp',             // Home in dark; the look card
+    scrTime:  GH + 'phone-career-timeline.webp',       // unused since Sep 21, kept for the asset
     // Feature grid photos; the Milestone card is the redesign's Ascent artwork, zoomed.
     feat1:    GH + 'New%20Mentor.jpeg',
     feat2:    GH + 'milestones-artwork.webp',
@@ -198,6 +204,12 @@
 '.hero-meta .dot{width:3px;height:3px;background:rgba(255,255,255,.35);border-radius:50%}',
 '.dl-hero-visual{display:flex;justify-content:center;align-items:center}',
 '.hero-iphone{width:400px;max-width:100%;filter:drop-shadow(0 40px 80px rgba(0,0,0,.55));position:relative;z-index:2}',
+/* Desktop only, and it must stay paired with the cropped 3-phone source that
+   the <picture> serves from the same 1025px breakpoint: 440px of the tighter
+   crop is the same 466px tall as 400px of the old one, so the header does not
+   grow and the phones come out about 10% larger. Anything below 1025px still
+   gets the uncropped two-phone mockup at its old width. */
+'@media (min-width: 1025px){.hero-iphone{width:440px}}',
 
 '/* ===== WHAT IS NEW (Sep 2026, the redesign) ===== */',
 '.dl-new{background:#fff;padding:64px 48px 36px;position:relative;overflow:hidden}',
@@ -240,6 +252,10 @@
 '.dl-feature-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.08)}',
 '.dl-fc-vis{height:180px;background:var(--warm-gray-2);overflow:hidden;display:flex;align-items:center;justify-content:center}',
 '.dl-fc-vis img{width:100%;height:100%;object-fit:cover}',
+/* The scholarship photo is a wide group shot in a 180px band: centred, the
+   crop took the cheque and cut the faces. 30% lifts the window a fifth of the
+   way up the frame. */
+'.dl-fc-vis img.raise{object-position:50% 30%}',
 '.dl-fc-body{padding:20px 22px 24px}',
 '.dl-fc-body h3{font-family:"Bricolage Grotesque",sans-serif;font-size:18px;font-weight:600;color:var(--dark);margin-bottom:8px;letter-spacing:-0.005em;}',
 '.dl-fc-body p{font-size:13px;color:var(--light-text);line-height:1.55}',
@@ -564,15 +580,15 @@
     var h2 = el('h2');
     h2.innerHTML = 'Same mission. <span>Upgraded.</span>';
     header.appendChild(h2);
-    header.appendChild(el('p', null, 'A major upgrade, not a visual refresh. Every screen rebuilt, four capabilities that are entirely new, and the same account you already have. Update from the App Store.'));
+    header.appendChild(el('p', null, 'A major upgrade, not a coat of paint. Every screen rebuilt, capabilities that did not exist before, and the same account you already have. Update from the App Store.'));
     inner.appendChild(header);
 
     var grid = el('div', { className: 'dl-new-grid' });
     var items = [
       { img: IMG.scrConv,  status: '#bfcacd', title: 'Conversations', tag: '18+', desc: 'Private messages with your mentor, safety-screened before delivery.' },
       { img: IMG.scrPulse, status: '#f6f2ff', title: 'Pulse AI', tag: '18+', desc: 'A career coach that knows your profile and answers right now.' },
-      { img: IMG.scrTime,  status: '#ced5d7', title: 'Career Timeline', desc: 'Map where you have been and where you are headed.' },
-      { img: IMG.scrDark,  status: '#140f1f', title: 'Dark mode', desc: 'Follows your device, day or night, with every screen redrawn for the dark.' },
+      { img: IMG.scrPath,  status: '#d3d2ce', title: 'Timeline & Pathways', desc: 'Explore careers ranked from your profile, and map where you are headed.' },
+      { img: IMG.scrDark,  status: '#140f1f', title: 'A whole new look', desc: 'Every screen rebuilt from the ground up, in light and dark.' },
     ];
     items.forEach(function(it) {
       var card = el('div', { className: 'dl-new-card' });
@@ -605,7 +621,7 @@
     var h2 = el('h2');
     h2.innerHTML = 'Built for <span>ambitious</span> students.';
     header.appendChild(h2);
-    header.appendChild(el('p', null, 'Six tools designed to turn curiosity into career momentum, without the friction.'));
+    header.appendChild(el('p', null, 'Six tools designed to turn curiosity into career momentum.'));
     inner.appendChild(header);
 
     var grid = el('div', { className: 'dl-feature-grid' });
@@ -613,14 +629,14 @@
       { img: IMG.feat1, alt: 'AI Smart Match', title: 'AI Smart Match', desc: 'AI-powered matching pairs students with the right industry mentor in seconds, across any field.' },
       { img: IMG.feat2, alt: 'The Milestones climb in the P3 app', title: 'Milestone Tracking', desc: 'Students check off achievements, from first campus visit to first job, building longitudinal data.' },
       { img: IMG.feat3, alt: 'Career Opportunities', title: 'Career Opportunities', desc: 'A full marketplace of internships, jobs, college-readiness resources, and diverse career pathways.' },
-      { img: IMG.feat4, alt: 'Monthly Scholarships', title: 'Monthly Scholarships', desc: "Reducing financial barriers with P3\u2019s own monthly scholarship plus hundreds of curated awards." },
+      { img: IMG.feat4, alt: 'Monthly Scholarships', cls: 'raise', title: 'Monthly Scholarships', desc: "Reducing financial barriers with P3\u2019s own monthly scholarship plus hundreds of curated awards." },
       { img: IMG.feat5, alt: 'Mentor Community', title: 'Mentor Community', desc: 'Browse mentors across every industry, follow the ones you connect with, and request a match.' },
-      { img: IMG.feat6, alt: 'Ask a Mentor', title: 'Ask a Mentor', desc: 'Ask a text question any time. Mentors answer in public video, so one answer helps many students.' },
+      { img: IMG.feat6, alt: 'Video Responses', title: 'Video Responses', desc: 'Ask a text question any time. Mentors answer in video, so one answer helps many students.' },
     ];
     cards.forEach(function(c) {
       var card = el('div', { className: 'dl-feature-card' });
       var vis = el('div', { className: 'dl-fc-vis' });
-      vis.appendChild(img(c.img, c.alt));
+      vis.appendChild(img(c.img, c.alt, c.cls));
       card.appendChild(vis);
       var body = el('div', { className: 'dl-fc-body' });
       var h3 = el('h3', null, c.title);
