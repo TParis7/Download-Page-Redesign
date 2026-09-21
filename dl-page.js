@@ -85,7 +85,7 @@
     // App screens, status bar cropped (148 of 1320px); the frame paints it back.
     scrConv:  GH + 'phone-conversations.webp',
     scrPulse: GH + 'phone-pulse-ai.webp',
-    scrPath:  GH + 'phone-pathways.webp',              // Pathway discovery, scrolled into frame
+    scrPath:  GH + 'phone-pathways.webp',              // an opened pathway, captured on 2.0
     scrDark:  GH + 'phone-dark-mode.webp',             // Home in dark; the look card
     scrTime:  GH + 'phone-career-timeline.webp',       // unused since Sep 21, kept for the asset
     // Feature grid photos; the Milestone card is the redesign's Ascent artwork, zoomed.
@@ -580,14 +580,14 @@
     var h2 = el('h2');
     h2.innerHTML = 'Same mission. <span>Upgraded.</span>';
     header.appendChild(h2);
-    header.appendChild(el('p', null, 'A major upgrade, not a coat of paint. Every screen rebuilt, capabilities that did not exist before, and the same account you already have. Update from the App Store.'));
+    header.appendChild(el('p', null, 'Every screen rebuilt, new innovative features, and the same account you already have. Update from the App Store.'));
     inner.appendChild(header);
 
     var grid = el('div', { className: 'dl-new-grid' });
     var items = [
       { img: IMG.scrConv,  status: '#bfcacd', title: 'Conversations', tag: '18+', desc: 'Private messages with your mentor, safety-screened before delivery.' },
       { img: IMG.scrPulse, status: '#f6f2ff', title: 'Pulse AI', tag: '18+', desc: 'A career coach that knows your profile and answers right now.' },
-      { img: IMG.scrPath,  status: '#d3d2ce', title: 'Timeline & Pathways', desc: 'Explore careers ranked from your profile, and map where you are headed.' },
+      { img: IMG.scrPath,  status: '#ced5d7', title: 'Timeline & Pathways', desc: 'Explore careers ranked from your profile, and map where you are headed.' },
       { img: IMG.scrDark,  status: '#140f1f', title: 'A whole new look', desc: 'Every screen rebuilt from the ground up, in light and dark.' },
     ];
     items.forEach(function(it) {
