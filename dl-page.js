@@ -259,10 +259,10 @@
 '.dl-feature-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.08)}',
 '.dl-fc-vis{height:180px;background:var(--warm-gray-2);overflow:hidden;display:flex;align-items:center;justify-content:center}',
 '.dl-fc-vis img{width:100%;height:100%;object-fit:cover}',
-/* Both group shots are wide photos in a 180px band, and centred the crop cut
-   the faces off at the top: the scholarship one took the cheque instead of the
-   winners, the opportunities one took the gowns instead of the heads. 30%
-   lifts the window a fifth of the way up the frame. */
+/* The opportunities photo is a wide group shot in a 180px band: centred, the
+   crop took the gowns instead of the heads. 30% lifts the window a fifth of
+   the way up the frame. The scholarship photo was lifted the same way and put
+   back at Thomas's call, so this is a per-photo judgement, not a rule. */
 '.dl-fc-vis img.raise{object-position:50% 30%}',
 '.dl-fc-body{padding:20px 22px 24px}',
 '.dl-fc-body h3{font-family:"Bricolage Grotesque",sans-serif;font-size:18px;font-weight:600;color:var(--dark);margin-bottom:8px;letter-spacing:-0.005em;}',
@@ -637,7 +637,7 @@
       { img: IMG.feat1, alt: 'AI Smart Match', title: 'AI Smart Match', desc: 'AI-powered matching pairs students with the right industry mentor in seconds, across any field.' },
       { img: IMG.feat2, alt: 'The Milestones climb in the P3 app', title: 'Milestone Tracking', desc: 'Students check off achievements, from first campus visit to first job, building longitudinal data.' },
       { img: IMG.feat3, alt: 'Career Opportunities', cls: 'raise', title: 'Career Opportunities', desc: 'A full marketplace of internships, jobs, college-readiness resources, and diverse career pathways.' },
-      { img: IMG.feat4, alt: 'Monthly Scholarships', cls: 'raise', title: 'Monthly Scholarships', desc: "Reducing financial barriers with P3\u2019s own monthly scholarship plus hundreds of curated awards." },
+      { img: IMG.feat4, alt: 'Monthly Scholarships', title: 'Monthly Scholarships', desc: "Reducing financial barriers with P3\u2019s own monthly scholarship plus hundreds of curated awards." },
       { img: IMG.feat5, alt: 'Mentor Community', title: 'Mentor Community', desc: 'Browse mentors across every industry, follow the ones you connect with, and request a match.' },
       { img: IMG.feat6, alt: 'Video Responses', title: 'Video Responses', desc: 'Ask a text question any time. Mentors answer in video, so one answer helps many students.' },
     ];
