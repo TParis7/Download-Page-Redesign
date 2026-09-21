@@ -72,7 +72,14 @@
 
   const IMG = {
     logoW:    WF + '69b02f65f0068e9fb16f0df1_P3%20Logo.svg',
-    qr:       WF + '69b02f65f0068e9fb16f0ddd_8e3543_be5994c0c9a84d0e9a649cbb4259a7b4~mv2.avif',
+    /* The Webflow AVIF this replaces encoded https://www.pulseofp3.org/download,
+       so scanning it from the download page returned you to the download page.
+       This one is the App Store listing. It uses Apple's short form
+       (apps.apple.com/app/id...) at error correction M rather than the full
+       path at H: the card renders the code at 128px, where the short form is
+       29 modules and 4.41px each, against 49 modules and 2.61px each. A screen
+       does not need H, and density is what decides whether a phone catches it. */
+    qr:       GH + 'qr-appstore.png',
     ios:      WF + '69b02f65f0068e9fb16f0ddf_ios%20badge.svg',
     android:  WF + '69b02f65f0068e9fb16f0de0_android%20badge.svg',
     iphone:   GH + 'iphone-mockup-redesign.webp',      // two phones: Home, Milestones
@@ -514,7 +521,7 @@
     // Download row
     var dlRow = el('div', { className: 'download-row' });
     var qrCard = el('div', { className: 'qr-card' });
-    qrCard.appendChild(img(IMG.qr, 'Scan QR code to download the P3 app'));
+    qrCard.appendChild(img(IMG.qr, 'Scan to open P3 on the App Store'));
     qrCard.appendChild(el('div', { className: 'qr-label' }, 'Scan to Download'));
     dlRow.appendChild(qrCard);
 
@@ -756,7 +763,7 @@
 
     var row = el('div', { className: 'final-cta-row' });
     var qr = el('div', { className: 'qr-card' });
-    qr.appendChild(img(IMG.qr, 'Scan QR code to download the P3 app'));
+    qr.appendChild(img(IMG.qr, 'Scan to open P3 on the App Store'));
     qr.appendChild(el('div', { className: 'qr-label' }, 'Scan to Download'));
     row.appendChild(qr);
 
