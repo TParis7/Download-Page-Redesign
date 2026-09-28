@@ -121,7 +121,7 @@
     terms:    'https://www.pulseofp3.org/app-terms-conditions',
     team:     'https://www.pulseofp3.org/about/about#team',
     annual:   'https://drive.google.com/file/d/1IrFocCsboO6mLZsG3GAlHjmKv_V7a9Sn/view?usp=drive_link',
-    press:    'https://www.pulseofp3.org/about/in-the-press',
+    press:    '/about/about#press',
   };
 
   /* ----------------------------------------------------------
