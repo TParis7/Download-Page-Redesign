@@ -1,5 +1,5 @@
 /* ============================================================
-   dl-page.js  v3.4.0
+   dl-page.js  v3.4.1
    Download Page — Pulse of Perseverance (P3)
    Repo: tparis7/Download-Page-Redesign
    ============================================================
@@ -115,12 +115,12 @@
     about:    'https://www.pulseofp3.org/about/about',
     scholars: 'https://www.pulseofp3.org/scholarships',
     donate:   'https://www.pulseofp3.org/donate',
-    ig:       'https://instagram.com/pulseofp3',
-    li:       'https://linkedin.com/company/pulseofp3',
-    yt:       'https://youtube.com/@pulseofp3',
+    ig:       'https://www.instagram.com/pulseofp3/',
+    li:       'https://www.linkedin.com/company/pulseofperseverance/',
+    yt:       'https://www.youtube.com/@PulseofPerseverance',
     terms:    'https://www.pulseofp3.org/app-terms-conditions',
-    team:     'https://www.pulseofp3.org/team',
-    annual:   'https://www.pulseofp3.org/annual-report',
+    team:     'https://www.pulseofp3.org/about/about#team',
+    annual:   'https://drive.google.com/file/d/1IrFocCsboO6mLZsG3GAlHjmKv_V7a9Sn/view?usp=drive_link',
     press:    'https://www.pulseofp3.org/about/in-the-press',
   };
 
