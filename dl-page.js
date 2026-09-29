@@ -540,7 +540,7 @@
 
     // Stats
     var meta = el('div', { className: 'hero-meta' });
-    meta.innerHTML = '<span><strong>\u2605 4.9</strong> App Store</span><span class="dot"></span><span><strong>1,200+</strong> users connected</span>';
+    meta.innerHTML = '<span><strong>\u2605 4.6</strong> App Store</span><span class="dot"></span><span><strong>1,200+</strong> users connected</span>';
     textCol.appendChild(meta);
     inner.appendChild(textCol);
 
