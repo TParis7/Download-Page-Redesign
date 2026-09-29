@@ -880,25 +880,11 @@
     // Mount to body
     document.body.prepend(wrapper);
 
-    // Fire GA page_view if gtag exists
-    if (typeof gtag === 'function') {
-      gtag('event', 'page_view', { page_title: 'Download the P3 App', page_path: '/download' });
-    }
-
-    // Track app download clicks for GA4
-    document.querySelectorAll('.dl-page a').forEach(function(a) {
-      var href = a.getAttribute('href') || '';
-      if (href.indexOf('apps.apple.com') !== -1) {
-        a.addEventListener('click', function () {
-          if (typeof gtag === 'function') gtag('event', 'app_download_click', { platform: 'ios' });
-        });
-      }
-      if (href.indexOf('play.google.com') !== -1) {
-        a.addEventListener('click', function () {
-          if (typeof gtag === 'function') gtag('event', 'app_download_click_android', { platform: 'android' });
-        });
-      }
-    });
+    // No analytics calls here. Webflow's Google tag already sends this page's page_view, and GA4 turns
+    // every App Store and Google Play link click on the site into app_download_click /
+    // app_download_click_android (rules under Admin > Events > Create event, fed by the tag's own outbound
+    // click tracking). Sending them from this file as well counted each /download visit and each store
+    // click twice (Sep 2026).
   }
 
   // Run on DOM ready
