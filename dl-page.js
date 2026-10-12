@@ -1,5 +1,5 @@
 /* ============================================================
-   dl-page.js  v3.5.0
+   dl-page.js  v3.6.0
    Download Page — Pulse of Perseverance (P3)
    Repo: tparis7/Download-Page-Redesign
    ============================================================
@@ -32,6 +32,9 @@
    • Nav v2: the shared public-site nav (Website Folder/site-chrome/
      apply-nav.py) replaces the page's own .dl-nav / .dl-mobile-menu.
    • "900+ users connected" -> 1,200+.
+   v3.6.0 (2026-10-12):
+   • Look for Pulse Launch: the app icon under the hero badges.
+   • Hero sub trimmed to one line; the h1 is three since the rename.
    v3.5.0 (2026-10-12):
    • Pulse Launch: the h1 reads Download the [Pulse Launch] App to
      Get Started, the closing CTA and image alts name the app, and
@@ -107,6 +110,7 @@
     feat5:    WF + '69b02f65f0068e9fb16f0e44_VersusWoman.png',
     feat6:    GH + 'Video%20collage.jpeg',
     video:    GH + 'p3-hero-bg.mp4',
+    appIcon:  'data:image/jpeg;base64,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',   // the Pulse Launch app icon (3b mid), same file as the menu card's
   };
 
   const LINKS = {
@@ -210,6 +214,12 @@
 '.store-badges{display:flex;flex-direction:column;gap:10px}',
 '.store-badges img{height:48px;cursor:pointer;transition:transform .15s}',
 '.store-badges img:hover{transform:scale(1.04)}',
+'.dl-get{display:flex;flex-direction:column;gap:12px}',
+'.dl-look{display:flex;align-items:center;gap:10px;color:#fff}',
+'.dl-look img{width:44px;height:44px;border-radius:10px;box-shadow:0 6px 16px -4px rgba(0,0,0,.5);flex:none}',
+'.dl-look-text{display:flex;flex-direction:column;line-height:1.25;text-align:left}',
+'.dl-look-text span{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6)}',
+'.dl-look-text strong{font-family:"Bricolage Grotesque",sans-serif;font-size:16px;font-weight:600}',
 '.hero-meta{display:flex;align-items:center;gap:18px;margin-top:8px;font-size:13px;color:#fff}',
 '.hero-meta strong{color:#fff!important;font-weight:600}',
 '.hero-meta .dot{width:3px;height:3px;background:rgba(255,255,255,.35);border-radius:50%}',
@@ -359,6 +369,7 @@
 '  .dl-hero-text .sub{font-size:15px}',
 '  .download-row{flex-direction:column;align-items:center;gap:16px}',
 '  .store-badges{flex-direction:row;justify-content:center}',
+'  .dl-get{align-items:center}',
 '  .hero-iphone{width:260px}',
 '  .dl-new{padding:48px 20px 26px}',
 '  .dl-new-grid{gap:12px}',
@@ -524,7 +535,7 @@
     var h1 = el('h1');
     h1.innerHTML = '<span class="line1">Download the <span class="highlight">Pulse Launch</span> App</span><br>to Get Started';
     textCol.appendChild(h1);
-    textCol.appendChild(el('p', { className: 'sub' }, 'Join a growing community where students unlock life-changing opportunities and mentors share their expertise to open doors. Free on iOS & Android.'));
+    textCol.appendChild(el('p', { className: 'sub' }, 'Mentors, scholarships and opportunities in one free app.'));
 
     // Download row
     var dlRow = el('div', { className: 'download-row' });
@@ -542,7 +553,16 @@
     andLink.target = '_blank'; andLink.rel = 'noopener';
     andLink.appendChild(img(IMG.android, 'Get it on Google Play'));
     badges.appendChild(andLink);
-    dlRow.appendChild(badges);
+    // The app icon under the badges, App Store style, so people know what to pick in the store.
+    var getCol = el('div', { className: 'dl-get' });
+    getCol.appendChild(badges);
+    var look = el('div', { className: 'dl-look' });
+    look.appendChild(img(IMG.appIcon, ''));
+    var lookText = el('span', { className: 'dl-look-text' });
+    lookText.innerHTML = '<span>Look for</span><strong>Pulse Launch</strong>';
+    look.appendChild(lookText);
+    getCol.appendChild(look);
+    dlRow.appendChild(getCol);
     textCol.appendChild(dlRow);
 
     // Stats
