@@ -1,5 +1,5 @@
 /* ============================================================
-   dl-page.js  v3.6.0
+   dl-page.js  v3.6.1
    Download Page — Pulse of Perseverance (P3)
    Repo: tparis7/Download-Page-Redesign
    ============================================================
@@ -32,6 +32,9 @@
    • Nav v2: the shared public-site nav (Website Folder/site-chrome/
      apply-nav.py) replaces the page's own .dl-nav / .dl-mobile-menu.
    • "900+ users connected" -> 1,200+.
+   v3.6.1 (2026-10-12):
+   • Phones: the Look for row and the stats row merge into one
+     listing row (icon, Pulse Launch, rating and users).
    v3.6.0 (2026-10-12):
    • Look for Pulse Launch: the app icon under the hero badges.
    • Hero sub trimmed to one line; the h1 is three since the rename.
@@ -220,6 +223,7 @@
 '.dl-look-text{display:flex;flex-direction:column;line-height:1.25;text-align:left}',
 '.dl-look-text span{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6)}',
 '.dl-look-text strong{font-family:"Bricolage Grotesque",sans-serif;font-size:16px;font-weight:600}',
+'.dl-look-meta{display:none;margin-top:2px;font-style:normal;font-size:13px;color:rgba(255,255,255,.7)}',
 '.hero-meta{display:flex;align-items:center;gap:18px;margin-top:8px;font-size:13px;color:#fff}',
 '.hero-meta strong{color:#fff!important;font-weight:600}',
 '.hero-meta .dot{width:3px;height:3px;background:rgba(255,255,255,.35);border-radius:50%}',
@@ -370,6 +374,9 @@
 '  .download-row{flex-direction:column;align-items:center;gap:16px}',
 '  .store-badges{flex-direction:row;justify-content:center}',
 '  .dl-get{align-items:center}',
+'  .dl-hero .hero-meta{display:none}',
+'  .dl-look-text>span{display:none}',
+'  .dl-look-meta{display:block}',
 '  .hero-iphone{width:260px}',
 '  .dl-new{padding:48px 20px 26px}',
 '  .dl-new-grid{gap:12px}',
@@ -560,6 +567,8 @@
     look.appendChild(img(IMG.appIcon, ''));
     var lookText = el('span', { className: 'dl-look-text' });
     lookText.innerHTML = '<span>Look for</span><strong>Pulse Launch</strong>';
+    var lookMeta = el('em', { className: 'dl-look-meta' });   // phones only: the stats line, folded in (filled below)
+    lookText.appendChild(lookMeta);
     look.appendChild(lookText);
     getCol.appendChild(look);
     dlRow.appendChild(getCol);
@@ -569,6 +578,8 @@
     var meta = el('div', { className: 'hero-meta' });
     meta.innerHTML = '<span><strong>\u2605 4.6</strong> App Store</span><span class="dot"></span><span><strong>1,200+</strong> users connected</span>';
     textCol.appendChild(meta);
+    var metaNums = meta.querySelectorAll('strong');
+    if (metaNums.length > 1) lookMeta.textContent = metaNums[0].textContent + ' \u00b7 ' + metaNums[1].textContent + ' users';
     inner.appendChild(textCol);
 
     // Right — phones. Desktop gets the three-phone render, phones and
