@@ -1,5 +1,5 @@
 /* ============================================================
-   dl-page.js  v3.6.2
+   dl-page.js  v3.6.3
    Download Page — Pulse of Perseverance (P3)
    Repo: tparis7/Download-Page-Redesign
    ============================================================
@@ -32,6 +32,9 @@
    • Nav v2: the shared public-site nav (Website Folder/site-chrome/
      apply-nav.py) replaces the page's own .dl-nav / .dl-mobile-menu.
    • "900+ users connected" -> 1,200+.
+   v3.6.3 (2026-10-28):
+   • What's new note: Coming to Android soon (was Android follows
+     in October).
    v3.6.2 (2026-10-28):
    • Hero h1 breaks after Pulse Launch at every width and sizes to
      the room, so it is two lines (was three on phones and 1440).
@@ -653,7 +656,7 @@
       grid.appendChild(card);
     });
     inner.appendChild(grid);
-    inner.appendChild(el('p', { className: 'dl-new-note' }, 'Updated on iOS now. Android follows in October.'));
+    inner.appendChild(el('p', { className: 'dl-new-note' }, 'Updated on iOS now. Coming to Android soon.'));
     section.appendChild(inner);
     return section;
   }
