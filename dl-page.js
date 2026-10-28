@@ -1,5 +1,5 @@
 /* ============================================================
-   dl-page.js  v3.6.4
+   dl-page.js  v3.6.5
    Download Page — Pulse of Perseverance (P3)
    Repo: tparis7/Download-Page-Redesign
    ============================================================
@@ -32,6 +32,8 @@
    • Nav v2: the shared public-site nav (Website Folder/site-chrome/
      apply-nav.py) replaces the page's own .dl-nav / .dl-mobile-menu.
    • "900+ users connected" -> 1,200+.
+   v3.6.5 (2026-10-28):
+   • Footer link reads Contact Us.
    v3.6.4 (2026-10-28):
    • Footer: Contact under the address.
    v3.6.3 (2026-10-28):
@@ -849,7 +851,7 @@
     brand.appendChild(fLogo);
     brand.appendChild(el('p', { className: 'dl-footer-tagline' }, 'Unlocking life-changing opportunities for young visionaries. Free on iOS & Android.'));
     brand.appendChild(el('p', { className: 'dl-footer-location' }, 'Chicago, IL \u00B7 Founded 2018'));
-    brand.appendChild(el('a', { className: 'dl-footer-contact', href: 'https://www.pulseofp3.org/about/contact' }, 'Contact'));
+    brand.appendChild(el('a', { className: 'dl-footer-contact', href: 'https://www.pulseofp3.org/about/contact' }, 'Contact Us'));
     grid.appendChild(brand);
 
     // Platform column
