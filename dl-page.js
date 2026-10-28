@@ -1,5 +1,5 @@
 /* ============================================================
-   dl-page.js  v3.6.1
+   dl-page.js  v3.6.2
    Download Page — Pulse of Perseverance (P3)
    Repo: tparis7/Download-Page-Redesign
    ============================================================
@@ -32,6 +32,10 @@
    • Nav v2: the shared public-site nav (Website Folder/site-chrome/
      apply-nav.py) replaces the page's own .dl-nav / .dl-mobile-menu.
    • "900+ users connected" -> 1,200+.
+   v3.6.2 (2026-10-28):
+   • Hero h1 breaks after Pulse Launch at every width and sizes to
+     the room, so it is two lines (was three on phones and 1440).
+   • Hero sub: jobs for opportunities, sized to one line from 375px.
    v3.6.1 (2026-10-12):
    • Phones: the Look for row and the stats row merge into one
      listing row (icon, Pulse Launch, rating and users).
@@ -206,7 +210,6 @@
 '.dl-hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(26,5,16,.85),rgba(74,16,32,.6),rgba(42,10,20,.8),rgba(20,5,16,.9));z-index:1}',
 '.dl-hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr 1fr;align-items:center;gap:40px;max-width:1240px;margin:0 auto;padding:120px 48px 64px}',
 '.dl-hero-text h1{font-family:"Bricolage Grotesque",sans-serif;font-size:52px;font-weight:700;color:#fff;line-height:1.1;margin-bottom:24px;letter-spacing:-0.02em}',
-'.dl-hero-text h1 .line1{display:inline}',
 '.dl-hero-text h1 .highlight{color:var(--crimson);white-space:nowrap}',
 '.dl-hero-text .sub{font-size:16px;color:rgba(255,255,255,.75);line-height:1.6;max-width:500px;margin-bottom:32px}',
 '.download-row{display:flex;gap:22px;align-items:flex-end}',
@@ -235,6 +238,7 @@
    grow and the phones come out about 10% larger. Anything below 1025px still
    gets the uncropped two-phone mockup at its old width. */
 '@media (min-width: 1025px){.hero-iphone{width:440px}}',
+'@media (min-width: 1025px){.dl-hero-text h1{font-size:clamp(34px, 3.3vw, 47px)}}',
 
 '/* ===== WHAT IS NEW (Sep 2026, the redesign) ===== */',
 '.dl-new{background:#fff;padding:64px 48px 36px;position:relative;overflow:hidden}',
@@ -369,8 +373,8 @@
 '}',
 '@media(max-width:768px){',
 '  .dl-hero-inner{padding:110px 20px 50px;gap:24px}',
-'  .dl-hero-text h1{font-size:36px}',
-'  .dl-hero-text .sub{font-size:15px}',
+'  .dl-hero-text h1{font-size:clamp(20px, calc((100vw - 40px) / 13.1), 36px)}',
+'  .dl-hero-text .sub{font-size:clamp(12.5px, calc((100vw - 40px) / 22.6), 15px)}',
 '  .download-row{flex-direction:column;align-items:center;gap:16px}',
 '  .store-badges{flex-direction:row;justify-content:center}',
 '  .dl-get{align-items:center}',
@@ -420,7 +424,6 @@
 '  .dl-footer-bottom p{flex-direction:column;gap:8px;align-items:center}',
 '}',
 '@media(max-width:480px){',
-'  .dl-hero-text h1{font-size:30px}',
 '  .dl-section-header h2{font-size:30px}',
 '  .dl-final-cta h2{font-size:26px}',
 '  .store-badges img{height:42px}',
@@ -540,9 +543,9 @@
     // Left — text
     var textCol = el('div', { className: 'dl-hero-text' });
     var h1 = el('h1');
-    h1.innerHTML = '<span class="line1">Download the <span class="highlight">Pulse Launch</span> App</span><br>to Get Started';
+    h1.innerHTML = 'Download the <span class="highlight">Pulse Launch</span><br>App to Get Started';
     textCol.appendChild(h1);
-    textCol.appendChild(el('p', { className: 'sub' }, 'Mentors, scholarships and opportunities in one free app.'));
+    textCol.appendChild(el('p', { className: 'sub' }, 'Mentors, scholarships and jobs in one free app.'));
 
     // Download row
     var dlRow = el('div', { className: 'download-row' });
