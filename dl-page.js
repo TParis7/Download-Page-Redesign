@@ -1,5 +1,5 @@
 /* ============================================================
-   dl-page.js  v3.6.3
+   dl-page.js  v3.6.4
    Download Page — Pulse of Perseverance (P3)
    Repo: tparis7/Download-Page-Redesign
    ============================================================
@@ -32,6 +32,8 @@
    • Nav v2: the shared public-site nav (Website Folder/site-chrome/
      apply-nav.py) replaces the page's own .dl-nav / .dl-mobile-menu.
    • "900+ users connected" -> 1,200+.
+   v3.6.4 (2026-10-28):
+   • Footer: Contact under the address.
    v3.6.3 (2026-10-28):
    • What's new note: Coming to Android soon (was Android follows
      in October).
@@ -343,6 +345,8 @@
 '.dl-footer-brand{display:flex;flex-direction:column}',
 '.dl-footer-brand .p3-footer-logo{height:36px;width:auto;filter:brightness(0) invert(1);margin-bottom:12px}',
 '.dl-footer-brand .dl-footer-tagline{font-size:13px;color:rgba(255,255,255,.5);line-height:1.6;margin-top:0;margin-bottom:16px}',
+'.dl-footer-brand .dl-footer-contact{align-self:flex-start;font-size:13px;color:rgba(255,255,255,.6);text-decoration:none;transition:color .2s}',
+'.dl-footer-brand .dl-footer-contact:hover{color:#fff}',
 '.dl-footer-brand .dl-footer-location{margin-top:10px;margin-bottom:16px;font-size:12px;color:rgba(255,255,255,.4)}',
 '.dl-footer-col{display:flex;flex-direction:column;gap:4px}',
 '.dl-footer-col h4{font-family:"Plus Jakarta Sans",sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px}',
@@ -845,6 +849,7 @@
     brand.appendChild(fLogo);
     brand.appendChild(el('p', { className: 'dl-footer-tagline' }, 'Unlocking life-changing opportunities for young visionaries. Free on iOS & Android.'));
     brand.appendChild(el('p', { className: 'dl-footer-location' }, 'Chicago, IL \u00B7 Founded 2018'));
+    brand.appendChild(el('a', { className: 'dl-footer-contact', href: 'https://www.pulseofp3.org/about/contact' }, 'Contact'));
     grid.appendChild(brand);
 
     // Platform column
