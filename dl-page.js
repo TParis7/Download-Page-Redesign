@@ -1,5 +1,5 @@
 /* ============================================================
-   dl-page.js  v3.6.5
+   dl-page.js  v3.6.6
    Download Page — Pulse of Perseverance (P3)
    Repo: tparis7/Download-Page-Redesign
    ============================================================
@@ -32,6 +32,11 @@
    • Nav v2: the shared public-site nav (Website Folder/site-chrome/
      apply-nav.py) replaces the page's own .dl-nav / .dl-mobile-menu.
    • "900+ users connected" -> 1,200+.
+   v3.6.6 (2026-11-10):
+   • What's new: the red "18+" tag on Conversations and Pulse AI
+     is now a green shield-check badge reading "18 and older"
+     (Thomas: "18+" read as adult content at first glance).
+     At 768px and below it sits on its own line under the title.
    v3.6.5 (2026-10-28):
    • Footer link reads Contact Us.
    v3.6.4 (2026-10-28):
@@ -161,6 +166,17 @@
     return e;
   }
 
+  // The age rule as a safety badge, not a content rating (Thomas, Nov 10 2026:
+  // a bare "18+" read as adult content at first glance). Not "verified":
+  // the gate reads the member's birthdate.
+  var SHIELD_CHECK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.5 4.5 5.3v6.1c0 4.6 3.1 8.6 7.5 10.1 4.4-1.5 7.5-5.5 7.5-10.1V5.3L12 2.5z"/><path d="m8.6 12.1 2.4 2.4 4.6-4.8" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  function ageBadge(text) {
+    var b = el('span', { className: 'dl-age', title: 'For members 18 and older' });
+    b.innerHTML = SHIELD_CHECK;
+    b.appendChild(document.createTextNode(text));
+    return b;
+  }
+
   function img(src, alt, cls) {
     var i = document.createElement('img');
     i.src = src; i.alt = alt || ''; i.loading = 'lazy';
@@ -258,7 +274,8 @@
 '.dl-new-body h3{font-family:"Bricolage Grotesque",sans-serif;font-size:17px;font-weight:600;color:var(--dark);margin-bottom:6px;letter-spacing:-0.005em}',
 '.dl-new-body p{font-size:13px;color:var(--light-text);line-height:1.55}',
 '.dl-new-note{text-align:center;font-size:13px;color:var(--light-text);margin-top:26px}',
-'.dl-age{display:inline-block;margin-left:8px;vertical-align:2px;font-family:"Plus Jakarta Sans",sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--crimson);background:rgba(217,58,58,.09);border-radius:50px;padding:3px 8px;line-height:1}',
+'.dl-age{display:inline-flex;align-items:center;gap:4px;margin-left:8px;vertical-align:1px;font-family:"Plus Jakarta Sans",sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#17694A;background:rgba(23,122,82,.1);border-radius:50px;padding:3px 8px 3px 6px;line-height:1;white-space:nowrap}',
+'.dl-age svg{flex:none;width:12px;height:12px}',
 '/* A phone standing in a tile, clipped at the tile bottom so the top of the screen shows. */',
 '.dl-shot{position:relative;overflow:hidden;background:linear-gradient(160deg,#f4eee8 0%,#e9e1da 100%)}',
 '.dl-shot-tall{height:300px;background:linear-gradient(160deg,#f7f2ed 0%,#ece4dc 100%)}',
@@ -397,6 +414,7 @@
 '  .dl-page .dl-shot-tall .dl-phone{width:80%;top:14px}',
 '  .dl-new-body{padding:14px 14px 18px}',
 '  .dl-new-body h3{font-size:14px;margin-bottom:6px}',
+'  .dl-new-body .dl-age{display:flex;width:max-content;margin:6px 0 0}',
 '  .dl-new-body p{font-size:12px;line-height:1.5}',
 '  .dl-new-note{font-size:12px;margin-top:18px}',
 '  .dl-features{padding:48px 20px}',
@@ -643,8 +661,8 @@
 
     var grid = el('div', { className: 'dl-new-grid' });
     var items = [
-      { img: IMG.scrConv,  status: '#bfcacd', title: 'Conversations', tag: '18+', desc: 'Private messages with your mentor, safety-screened before delivery.' },
-      { img: IMG.scrPulse, status: '#f6f2ff', title: 'Pulse AI', tag: '18+', desc: 'A career coach that knows your profile and answers right now.' },
+      { img: IMG.scrConv,  status: '#bfcacd', title: 'Conversations', tag: '18 and older', desc: 'Private messages with your mentor, safety-screened before delivery.' },
+      { img: IMG.scrPulse, status: '#f6f2ff', title: 'Pulse AI', tag: '18 and older', desc: 'A career coach that knows your profile and answers right now.' },
       { img: IMG.scrPath,  status: '#ced5d7', title: 'Timeline & Pathways', desc: 'Explore careers ranked from your profile, and map where you are headed.' },
       { img: IMG.scrDark,  status: '#140f1f', title: 'A whole new look', desc: 'Every screen rebuilt from the ground up, in light and dark.' },
     ];
@@ -655,7 +673,7 @@
       card.appendChild(vis);
       var body = el('div', { className: 'dl-new-body' });
       var h3 = el('h3', null, it.title);
-      if (it.tag) h3.appendChild(el('span', { className: 'dl-age' }, it.tag));
+      if (it.tag) h3.appendChild(ageBadge(it.tag));
       body.appendChild(h3);
       body.appendChild(el('p', null, it.desc));
       card.appendChild(body);
@@ -698,7 +716,7 @@
       card.appendChild(vis);
       var body = el('div', { className: 'dl-fc-body' });
       var h3 = el('h3', null, c.title);
-      if (c.tag) h3.appendChild(el('span', { className: 'dl-age' }, c.tag));
+      if (c.tag) h3.appendChild(ageBadge(c.tag));
       body.appendChild(h3);
       body.appendChild(el('p', null, c.desc));
       card.appendChild(body);
