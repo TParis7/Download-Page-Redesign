@@ -1,5 +1,5 @@
 /* ============================================================
-   dl-page.js  v3.6.6
+   dl-page.js  v3.6.7
    Download Page — Pulse of Perseverance (P3)
    Repo: tparis7/Download-Page-Redesign
    ============================================================
@@ -32,6 +32,9 @@
    • Nav v2: the shared public-site nav (Website Folder/site-chrome/
      apply-nav.py) replaces the page's own .dl-nav / .dl-mobile-menu.
    • "900+ users connected" -> 1,200+.
+   v3.6.7 (2026-11-12):
+   • 860 to 1024px wide (an open iPhone Duo in Safari): hero side by
+     side, the three Talent stat cards in one row.
    v3.6.6 (2026-11-10):
    • What's new: the red "18+" tag on Conversations and Pulse AI
      is now a green shield-check badge reading "18 and older"
@@ -393,6 +396,18 @@
 '  .dl-talent-visual{flex-wrap:wrap;justify-content:center}',
 '  .dl-talent-stat{flex:1 1 220px;max-width:280px}',
 '  .dl-talent-sub{margin:28px auto 0}',
+'}',
+'/* Wide, short touch screens (an open iPhone Duo is 951 x 543 in Safari; small tablets in landscape): the hero sits side by side and the three stat cards share a row (Thomas, Nov 12 2026) */',
+'@media(min-width:860px) and (max-width:1024px){',
+'  .dl-hero-inner{grid-template-columns:1.1fr 1fr;text-align:left;padding:96px 32px 40px;gap:24px}',
+'  .dl-hero-text h1{font-size:38px;margin-bottom:16px}',
+'  .dl-hero-text .sub{margin-left:0;margin-right:0;margin-bottom:20px}',
+'  .download-row{justify-content:flex-start}',
+'  .hero-meta{justify-content:flex-start}',
+'  .dl-hero-visual{margin-top:0}',
+'  .dl-talent-visual{flex-direction:row;flex-wrap:nowrap}',
+'  .dl-talent-stat{flex:1 1 0;max-width:none;text-align:left}',
+'  .dl-safety-grid{grid-template-columns:repeat(3,1fr)}',
 '}',
 '/* 991px: Nav switches to mobile (matches hp-shared-sections.js breakpoint) */',
 '@media(max-width:991px){',
@@ -1150,5 +1165,23 @@
     if (document.body) start(); else document.addEventListener('DOMContentLoaded', start);
   }
   queue();
+})();
+/* p3-navwide v1 (Nov 12 2026). Source: Website Folder/site-chrome/navwide.js, applied with rail.js
+   by apply-rail.py. The full navigation (logo, four links, Enterprise and Login) needs 780px, but
+   every page switched to the menu button at 991px. An open iPhone Duo is 951px wide in Safari, so
+   it got the phone menu on a tablet-wide screen. From 860 to 991px the full bar now shows. The
+   selectors out-rank the nav spec's and the pages' own 991px rules, whatever order the styles load in. */
+(function () {
+  if (window.__p3NavWide) return;
+  window.__p3NavWide = 1;
+  var css = '@media (min-width: 860px) and (max-width: 991px) {' +
+    'html body .p3-nav .p3-nav-links, html body .p3-nav .p3-nav-actions { display: flex !important; }' +
+    'html body .p3-nav .pp-mob-menu { display: none !important; }' +
+    'html body .p3-nav { padding: 16px 32px !important; height: auto !important; }' +
+    '}';
+  var st = document.createElement('style');
+  st.id = 'p3-nav-wide';
+  st.textContent = css;
+  (document.head || document.documentElement).appendChild(st);
 })();
 /* p3-rail:end */
